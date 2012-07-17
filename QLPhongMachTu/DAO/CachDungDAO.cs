@@ -42,13 +42,14 @@ namespace DAO
             string sql = " select * from CACHDUNG ";
             DataTable dt = new DataTable();
             dt = conectData.LoadData(sql);
-            if (dt == null)
+            if (dt == null || dt.Rows.Count == 0)
                 return null;
             else
             {
                 list = new CachDungDTO[dt.Rows.Count];
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    list[i] = new CachDungDTO();
                     list[i].MaCachDung = int.Parse(dt.Rows[i]["MaCachDung"].ToString());
                     list[i].CachDung = dt.Rows[i]["CachDung"].ToString();
                     list[i].Sang= int.Parse(dt.Rows[i]["Sang"].ToString());
@@ -59,6 +60,44 @@ namespace DAO
                 }
             }
             return list;
+        }
+        public CachDungDTO getByPrimaryKey(int macachdung)// list of all benhnhan
+        {
+            CachDungDTO cachdung = new CachDungDTO();
+            string sql = " select * from CACHDUNG Where MaCachDung=@MaCachDung ";
+            SqlParameter sp = new SqlParameter("@MaCachDung", macachdung);
+            DataTable dt = new DataTable();
+            dt = conectData.LoadData(sql);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                 cachdung.MaCachDung = int.Parse(dt.Rows[0]["MaCachDung"].ToString());
+                cachdung.CachDung = dt.Rows[0]["CachDung"].ToString();
+                cachdung.Sang = int.Parse(dt.Rows[0]["Sang"].ToString());
+                cachdung.Trua = int.Parse(dt.Rows[0]["Trua"].ToString());
+                cachdung.Chieu = int.Parse(dt.Rows[0]["Chieu"].ToString());
+                cachdung.Toi = int.Parse(dt.Rows[0]["Toi"].ToString());
+               
+            }
+            return cachdung;
+        }
+        public int delete(int magv)
+        {
+            string sql;
+            int result;
+            SqlParameter sp;
+            try
+            {
+                 sql = "delete from CACHDUNG where MaCachDung=@MaCachDung";
+                 sp = new SqlParameter("@MaCachDung", magv);
+                 result = conectData.Insert_Update_Delete(sql, sp);
+            }
+            catch (Exception ex)
+            {
+                return -2; // can't delte this CachDung, if this CachDung is not a primary key of any table =>> return -1;
+            }
+            return result;
 
         }
     }

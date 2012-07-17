@@ -13,7 +13,7 @@ namespace DAO
        private ConectData conectData = new ConectData();
         string magv;
             
-        public string getMaGV() // lay ma giao vien
+        public string getMaBenhNhan() // lay ma giao vien
         {
             string sql = " SELECT MAX(cast(substring(MaBenhNhan,3,3) as int)) FROM BENHNHAN";
             DataTable dt = new DataTable();
@@ -67,13 +67,32 @@ namespace DAO
            sp[5] = new SqlParameter("@SoDienThoai", bn.SoDienThoai);
            return conectData.Insert_Update_Delete(sql, sp);
        }
-       public BenhNhanDTO searchByMaBN(string mabn)
+       public BenhNhanDTO getByPrimaryKey(string mabn)
        {
            BenhNhanDTO bn = new BenhNhanDTO();
            string sql = " select * from BENHNHAN  where MaBenhNhan =@magv";
            SqlParameter sp = new SqlParameter("@magv", mabn);
            DataTable dt = conectData.LoadData(sql, sp);
-           if (dt == null)
+           if (dt == null || dt.Rows.Count==0)
+               return null;
+           else
+           {
+               bn.MaBenhNhan = dt.Rows[0]["MaBenhNhan"].ToString();
+               bn.HoTen = dt.Rows[0]["HoTen"].ToString();
+               bn.GioiTinh = dt.Rows[0]["GioiTinh"].ToString();
+               bn.NamSinh = dt.Rows[0]["NamSinh"].ToString();
+               bn.DiaChi = dt.Rows[0]["DiaChi"].ToString();
+               bn.SoDienThoai = dt.Rows[0]["SoDienThoai"].ToString();
+           }
+           return bn;
+       }
+       public BenhNhanDTO getByHoTen(string hoten)
+       {
+           BenhNhanDTO bn = new BenhNhanDTO();
+           string sql = " select * from BENHNHAN  where HoTen like @magv";
+           SqlParameter sp = new SqlParameter("@magv", "%" + hoten + "%");
+           DataTable dt = conectData.LoadData(sql, sp);
+           if (dt == null || dt.Rows.Count==0)
                return null;
            else
            {
@@ -89,16 +108,43 @@ namespace DAO
        public BenhNhanDTO[]  getList()// list of all benhnhan
        {
            BenhNhanDTO[] list;
-           string sql = " select * from BENHNHAN ";    
+           string sql = "select * from BENHNHAN";    
            DataTable dt = new DataTable();
            dt = conectData.LoadData(sql);
-           if (dt == null)
+           if (dt == null || dt.Rows.Count == 0)
                return null;
            else
            {
                 list = new BenhNhanDTO[dt.Rows.Count];
                for (int i = 0; i < dt.Rows.Count; i++)
                {
+                   list[i] = new BenhNhanDTO();
+                   list[i].MaBenhNhan =  dt.Rows[i]["MaBenhNhan"].ToString();
+                   list[i].HoTen =  dt.Rows[i]["HoTen"].ToString();
+                   list[i].GioiTinh = dt.Rows[i]["GioiTinh"].ToString();
+                   list[i].NamSinh = dt.Rows[i]["NamSinh"].ToString();
+                   list[i].DiaChi = dt.Rows[i]["DiaChi"].ToString();
+                   list[i].SoDienThoai = dt.Rows[i]["SoDienThoai"].ToString();
+               }
+           }
+           return list;
+
+       }
+       public BenhNhanDTO[] getListByDSKB(string ngaykham, string optinon)// list of all benhnhan theo danh sach ( da duoc dua vao or chua duoc dua vao ) kham benh trong ngay
+       {
+           BenhNhanDTO[] list;
+           string sql = "select * from BENHNHAN where MaBenhNhan " + optinon + " (select MaBenhNhan from DANHSACHKHAMBENH where NgayKham=@NgayKham)";
+           DataTable dt = new DataTable();
+           SqlParameter sp = new SqlParameter("@NgayKham", ngaykham);
+           dt = conectData.LoadData(sql,sp);
+           if (dt == null || dt.Rows.Count == 0)
+               return null;
+           else
+           {
+               list = new BenhNhanDTO[dt.Rows.Count];
+               for (int i = 0; i < dt.Rows.Count; i++)
+               {
+                   list[i] = new BenhNhanDTO();
                    list[i].MaBenhNhan = dt.Rows[i]["MaBenhNhan"].ToString();
                    list[i].HoTen = dt.Rows[i]["HoTen"].ToString();
                    list[i].GioiTinh = dt.Rows[i]["GioiTinh"].ToString();
@@ -108,6 +154,23 @@ namespace DAO
                }
            }
            return list;
+       }
+       public int delete(string magv)
+       {
+           string sql;
+           int result;
+           SqlParameter sp;
+           try
+           {
+               sql = "delete from BENHNHAN where MaBenhNhan=@MaBenhNhan";
+               sp = new SqlParameter("@MaBenhNhan", magv);
+               result = conectData.Insert_Update_Delete(sql, sp);
+           }
+           catch (Exception ex)
+           {
+               return -2; // can't delte this BenhNhan, if this CachDung is not a primary key of any table =>> return -1;
+           }
+           return result;
 
        }
 

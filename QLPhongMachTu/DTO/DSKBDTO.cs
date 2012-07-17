@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DT
+namespace DTO
 {
     public class DSKBDTO
     {
@@ -26,6 +26,10 @@ namespace DT
         {
             get { return _NgayKham; }
             set { _NgayKham = value; }
+     
+        }
+        public DSKBDTO()
+        {
         }
     }
 }

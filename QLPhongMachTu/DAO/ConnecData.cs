@@ -9,7 +9,7 @@ namespace DAO
 {
     public class ConectData
     {
-        string connection = @"Data Source=THANHIT-PC\SQLEXPRESS;Initial Catalog=PhongMachTu;Integrated Security=True";
+        string connection = @"Data Source=ThanhIT-PC\sqlexpress;Initial Catalog=PhongMachTu;Integrated Security=True";
         SqlConnection conn;
         void OpenConnection()
         {
