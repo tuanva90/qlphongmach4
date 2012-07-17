@@ -13,6 +13,12 @@ namespace DTO
         private float _SoLuong;
         private int _MaCachDung;
         private float _DonGia;
+
+        public float DonGia
+        {
+            get { return _DonGia; }
+            set { _DonGia = value; }
+        }
         public CT_KhamDTO()
         {
         }

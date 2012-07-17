@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,8 +46,14 @@
   <ItemGroup>
     <Compile Include="BenhNhanDAO.cs" />
     <Compile Include="CachDungDAO.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ConnecData.cs" />
+    <Compile Include="CT_KhamDAO.cs" />
+    <Compile Include="DonViDAO.cs" />
+    <Compile Include="DSKBDAO.cs" />
+    <Compile Include="HoaDonDAO.cs" />
+    <Compile Include="LoaiBenhDAO.cs" />
+    <Compile Include="LoaiThuocDAO.cs" />
+    <Compile Include="PhieuKhamBenhDAO.cs" />
     <Compile Include="PhongMachTuDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

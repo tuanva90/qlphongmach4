@@ -3,3 +3,8 @@ D:\study\ky 7\Phan mem huong doi tuong\QLPhongMachTu\DTO\bin\Debug\DTO.pdb
 D:\study\ky 7\Phan mem huong doi tuong\QLPhongMachTu\DTO\obj\Debug\ResolveAssemblyReference.cache
 D:\study\ky 7\Phan mem huong doi tuong\QLPhongMachTu\DTO\obj\Debug\DTO.dll
 D:\study\ky 7\Phan mem huong doi tuong\QLPhongMachTu\DTO\obj\Debug\DTO.pdb
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\DTO\obj\Debug\ResolveAssemblyReference.cache
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\DTO\obj\Debug\DTO.pdb
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\DTO\bin\Debug\DTO.dll
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\DTO\bin\Debug\DTO.pdb
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\DTO\obj\Debug\DTO.dll

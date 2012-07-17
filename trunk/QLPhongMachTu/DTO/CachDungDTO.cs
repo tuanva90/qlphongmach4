@@ -14,15 +14,15 @@ namespace DTO
         private int _Chieu;
         private int _Toi;
         private string _GhiChu;
+        public CachDungDTO()
+        {
+        }
 
         public string GhiChu
         {
             get { return _GhiChu; }
             set { _GhiChu = value; }
-        }
-        private CachDungDTO()
-        {
-        }
+        }     
 
         public int Toi
         {
