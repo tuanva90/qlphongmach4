@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BUS;
 using DTO;
+using System.Text.RegularExpressions;
 
 namespace QLPhongMachTu
 {
@@ -67,6 +68,14 @@ namespace QLPhongMachTu
                 bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));// do danh sach bn chua co trong dskb len lvdskb
                
             }
+            txtmabenhnhan.Text = "";
+            txthotenbenhnhan.Text = "";
+            txtmabenhnhan.Text = "";
+            txthoten.Text = "";
+            cmbgioitinh.Text = "";
+            txtnamsinh.Text = "";
+            txtsodienthoai.Text = "";
+            txtdiachi.Text = ""; 
         }
 
         private void btnthemvaodskb_Click(object sender, EventArgs e)
@@ -85,6 +94,8 @@ namespace QLPhongMachTu
                 bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
                 btnxoa.Enabled = false;
             }
+            txtmabn.Text = "";
+            txthoten.Text = "";
         }
 
         string mabn;
@@ -116,6 +127,8 @@ namespace QLPhongMachTu
                 bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
                 btnthemvaodskb.Enabled = false;
             }
+            txtmabn.Text = "";
+            txthoten.Text = "";
         }
 
         private void dtimengaykham_Click(object sender, EventArgs e)
@@ -130,10 +143,42 @@ namespace QLPhongMachTu
             bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
             if (DateTime.Now.ToShortDateString().ToString().Equals(dtimengaykham.Text.ToString()) == false)
             {
-                btnthemvaodskb.Enabled = false;
-                btnthem.Enabled = false;
+                btnthemvaodskb.Enabled = false;              
                 btnxoa.Enabled = false;
             }
+        }
+
+        private void txtmabn_TextChanged(object sender, EventArgs e)
+        {
+
+            Regex re = new Regex(@"^[\w\s]+$");
+            if (re.IsMatch(txtmabn.Text) == false && txtmabn.Text != "")
+            {
+                MessageBox.Show(" Bạn vừa nhập kí tự đặc biệt, nhập lai !");
+                txtmabn.Clear();
+            }
+            if (txtmabn.Text == "")
+            {
+                bnbus.showInListView(lvdsbenhnhan, bnbus.getList());
+            }
+            else
+                bnbus.showInListView(lvdsbenhnhan, bnbus.getByPrimaryKey(txtmabn.Text.ToString()));
+        }
+
+        private void txthoten_TextChanged(object sender, EventArgs e)
+        {
+            Regex re = new Regex(@"^[\w\s]+$");
+            if (re.IsMatch(txthoten.Text) == false && txthoten.Text != "")
+            {
+                MessageBox.Show(" Bạn vừa nhập kí tự đặc biệt, nhập lai !");
+                txthoten.Clear();
+            }
+            if (txthoten.Text == "")
+            {
+                bnbus.showInListView(lvdsbenhnhan, bnbus.getList());
+            }
+            else
+                bnbus.showInListView(lvdsbenhnhan, bnbus.getByHoTen(txthoten.Text.ToString()));
         }
     }
 }

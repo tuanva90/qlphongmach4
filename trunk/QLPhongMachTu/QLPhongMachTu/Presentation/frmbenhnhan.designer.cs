@@ -47,7 +47,6 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.btnokmbn = new DevComponents.DotNetBar.ButtonX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.txtmabn = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -310,7 +309,6 @@
             // 
             this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel6.Controls.Add(this.btnokmbn);
             this.groupPanel6.Controls.Add(this.labelX6);
             this.groupPanel6.Controls.Add(this.labelX7);
             this.groupPanel6.Controls.Add(this.txtmabn);
@@ -339,17 +337,6 @@
             this.groupPanel6.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
             this.groupPanel6.TabIndex = 5;
             this.groupPanel6.Text = "Tìm bệnh nhân               ";
-            // 
-            // btnokmbn
-            // 
-            this.btnokmbn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnokmbn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnokmbn.Location = new System.Drawing.Point(261, 3);
-            this.btnokmbn.Name = "btnokmbn";
-            this.btnokmbn.Size = new System.Drawing.Size(59, 20);
-            this.btnokmbn.TabIndex = 7;
-            this.btnokmbn.Text = "OK";
-            this.btnokmbn.Click += new System.EventHandler(this.btnokmbn_Click);
             // 
             // labelX6
             // 
@@ -515,7 +502,7 @@
             this.cmbgioitinh.FormattingEnabled = true;
             this.cmbgioitinh.Items.AddRange(new object[] {
             "Nam",
-            "Nu"});
+            "Nữ"});
             this.cmbgioitinh.Location = new System.Drawing.Point(79, 130);
             this.cmbgioitinh.Name = "cmbgioitinh";
             this.cmbgioitinh.Size = new System.Drawing.Size(134, 21);
@@ -647,7 +634,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private System.Windows.Forms.BindingSource bENHNHANBindingSource;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel6;
-        private DevComponents.DotNetBar.ButtonX btnokmbn;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.TextBoxX txtmabn;

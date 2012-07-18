@@ -175,6 +175,7 @@
             this.txtmabn.Name = "txtmabn";
             this.txtmabn.Size = new System.Drawing.Size(94, 20);
             this.txtmabn.TabIndex = 3;
+            this.txtmabn.TextChanged += new System.EventHandler(this.txtmabn_TextChanged);
             // 
             // txthoten
             // 
@@ -186,6 +187,7 @@
             this.txthoten.Name = "txthoten";
             this.txthoten.Size = new System.Drawing.Size(94, 20);
             this.txthoten.TabIndex = 4;
+            this.txthoten.TextChanged += new System.EventHandler(this.txthoten_TextChanged);
             // 
             // lvdsbenhnhan
             // 
@@ -372,8 +374,8 @@
             // 
             this.tabControl1.BackColor = System.Drawing.Color.Transparent;
             this.tabControl1.CanReorderTabs = true;
-            this.tabControl1.Controls.Add(this.tabControlPanel2);
             this.tabControl1.Controls.Add(this.tabControlPanel1);
+            this.tabControl1.Controls.Add(this.tabControlPanel2);
             this.tabControl1.Location = new System.Drawing.Point(3, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -513,7 +515,7 @@
             this.cmbgioitinh.FormattingEnabled = true;
             this.cmbgioitinh.Items.AddRange(new object[] {
             "Nam",
-            "Nu"});
+            "Nữ"});
             this.cmbgioitinh.Location = new System.Drawing.Point(79, 130);
             this.cmbgioitinh.Name = "cmbgioitinh";
             this.cmbgioitinh.Size = new System.Drawing.Size(134, 21);
