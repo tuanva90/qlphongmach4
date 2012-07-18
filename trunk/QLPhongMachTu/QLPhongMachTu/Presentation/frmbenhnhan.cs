@@ -144,6 +144,11 @@ namespace QLPhongMachTu
                 MessageBox.Show(" Bạn vừa nhập kí tự đặc biệt, nhập lai !");
                 txtmabn.Clear();
             }
+            if (txtmabn.Text == "")
+            {
+                bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getList());
+            }
+            else
             bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getByPrimaryKey(txtmabn.Text.ToString()));
         }
 
@@ -155,7 +160,12 @@ namespace QLPhongMachTu
                 MessageBox.Show(" Bạn vừa nhập kí tự đặc biệt, nhập lai !");
                 txthoten.Clear();
             }
-            bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getByHoTen(txthoten.Text.ToString()));
+            if (txthoten.Text == "")
+            {
+                bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getList());
+            }
+            else
+                bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getByHoTen(txthoten.Text.ToString()));
         }
 
         private void cmbgioitinh_SelectedIndexChanged(object sender, EventArgs e)
