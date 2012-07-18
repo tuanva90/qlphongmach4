@@ -88,6 +88,12 @@
     <Compile Include="Presentation\frmloaibenh.Designer.cs">
       <DependentUpon>frmloaibenh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmphieukhambenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmphieukhambenh.Designer.cs">
+      <DependentUpon>frmphieukhambenh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmthuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmloaibenh.resx">
       <DependentUpon>frmloaibenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmphieukhambenh.resx">
+      <DependentUpon>frmphieukhambenh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmthuoc.resx">
       <DependentUpon>frmthuoc.cs</DependentUpon>
