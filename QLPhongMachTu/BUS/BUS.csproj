@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="BenhNhanBUS.cs" />
     <Compile Include="CachDungBUS.cs" />
+    <Compile Include="CT_KhamBUS.cs" />
     <Compile Include="DonViBUS.cs" />
     <Compile Include="DSKBBUS.cs" />
     <Compile Include="LoaiBenhBUS.cs" />
     <Compile Include="LoaiThuocBUS.cs" />
+    <Compile Include="PhieuKhamBenhBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
