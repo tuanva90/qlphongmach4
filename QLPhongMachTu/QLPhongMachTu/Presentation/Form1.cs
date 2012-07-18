@@ -100,7 +100,8 @@ namespace QLPhongMachTu
 
         private void btnphieukham_Click(object sender, EventArgs e)
         {
-            
+            Presentation.frmphieukhambenh frm = new Presentation.frmphieukhambenh();
+            frm.ShowDialog();
         }
 
         private void btndsbb_Click(object sender, EventArgs e)

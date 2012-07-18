@@ -236,7 +236,6 @@
             // 
             // btnphieukham
             // 
-            this.btnphieukham.Enabled = false;
             this.btnphieukham.Image = global::QLPhongMachTu.Properties.Resources.clipboard;
             this.btnphieukham.ImagePaddingHorizontal = 8;
             this.btnphieukham.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
