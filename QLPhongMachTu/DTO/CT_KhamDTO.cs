@@ -8,7 +8,7 @@ namespace DTO
     public class CT_KhamDTO
     {
         private string _MaCT_Kham;
-        private int _MaPhieuKhamBenh;
+        private string _MaPhieuKhamBenh;
         private int _MaLoaiThuoc;
         private float _SoLuong;
         private int _MaCachDung;
@@ -41,7 +41,7 @@ namespace DTO
             set { _MaLoaiThuoc = value; }
         }
 
-        public int MaPhieuKhamBenh
+        public string MaPhieuKhamBenh
         {
             get { return _MaPhieuKhamBenh; }
             set { _MaPhieuKhamBenh = value; }
