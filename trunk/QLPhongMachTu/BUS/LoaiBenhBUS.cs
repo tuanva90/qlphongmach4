@@ -72,25 +72,42 @@ namespace BUS
         }
         public void update(LoaiBenhDTO dto)
         {
-            if (dto.TenLoaiBenh == "")
+            if (dto.MaLoaiBenh == 1)
             {
-                MessageBox.Show(" Nhập tên loại bệnh !");
+                MessageBox.Show(" Đây là giá trị mặc định để xác định bệnh nhân không bị bệnh, không thể xóa hoặc sửa !");
             }
             else
             {
-                LoaiBenhDTO[] dv = dao.getList();
-                if (dv != null || dv.Length == 0)
+                if (dto.TenLoaiBenh == "")
                 {
-                    bool check = false; // kieim tra trung ten
-                    for (int i = 0; i < dv.Length; i++)
+                    MessageBox.Show(" Nhập tên loại bệnh !");
+                }
+                else
+                {
+                    LoaiBenhDTO[] dv = dao.getList();
+                    if (dv != null || dv.Length == 0)
                     {
-                        if (dto.TenLoaiBenh == (dv[i].TenLoaiBenh.ToString()))
+                        bool check = false; // kieim tra trung ten
+                        for (int i = 0; i < dv.Length; i++)
                         {
-                            check = true;
-                            break;
+                            if (dto.TenLoaiBenh == (dv[i].TenLoaiBenh.ToString()))
+                            {
+                                check = true;
+                                break;
+                            }
                         }
+                        if (check != true)
+                        {
+                            int result = dao.update(dto);
+                            if (result > 0)
+                                MessageBox.Show(" Cập nhật thông tin loại bệnh thành công !");
+                            else
+                                MessageBox.Show(" Cập nhật thông tin loại bệnh thất bại !");
+                        }
+                        else
+                            MessageBox.Show(" Tên đơn loại bệnh đã tồn tại !");
                     }
-                    if (check != true)
+                    else
                     {
                         int result = dao.update(dto);
                         if (result > 0)
@@ -98,37 +115,41 @@ namespace BUS
                         else
                             MessageBox.Show(" Cập nhật thông tin loại bệnh thất bại !");
                     }
-                    else
-                        MessageBox.Show(" Tên đơn loại bệnh đã tồn tại !");
-                }
-                else
-                {
-                    int result = dao.update(dto);
-                    if (result > 0)
-                        MessageBox.Show(" Cập nhật thông tin loại bệnh thành công !");
-                    else
-                        MessageBox.Show(" Cập nhật thông tin loại bệnh thất bại !");
                 }
             }
 
         }
-
+        public LoaiBenhDTO getByPrimaryKey(int ma)
+        {
+            return dao.getByPrimaryKey(ma);
+        }
         public void delete(int ma)
         {
             DialogResult result;
-            result = MessageBox.Show("Bạn có thật sự muốn xóa loại bệnh này ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (ma == 1)
             {
-                int result1 = dao.delete(ma);
-                if (result1 > 0)
-                    MessageBox.Show(" Đã xóa!");
-                else
+                MessageBox.Show(" Đây là giá trị mặc định để xác định bệnh nhân không bị bệnh, không thể xóa hoặc sửa !");
+            }
+            else
+            {
+                result = MessageBox.Show("Bạn có thật sự muốn xóa loại bệnh này ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    if (result1 == -2)
-                        MessageBox.Show(" Không thể xóa vì ràng buộc khóa ngoại !");
-                    MessageBox.Show(" Xóa thất bại !");
+                    int result1 = dao.delete(ma);
+                    if (result1 > 0)
+                        MessageBox.Show(" Đã xóa!");
+                    else
+                    {
+                        if (result1 == -2)
+                            MessageBox.Show(" Không thể xóa vì ràng buộc khóa ngoại !");
+                        MessageBox.Show(" Xóa thất bại !");
+                    }
                 }
             }
+        }
+        public LoaiBenhDTO[] getList()
+        {
+            return dao.getList();
         }
     }
 }

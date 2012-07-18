@@ -130,5 +130,13 @@ namespace BUS
                 }
             }
         }
+        public LoaiThuocDTO[] getList()
+        {
+            return dao.getList();
+        }
+          public LoaiThuocDTO getByPrimaryKey(int mathuoc)
+        {
+            return dao.getByPrimaryKey(mathuoc);
+        }
     }
 }

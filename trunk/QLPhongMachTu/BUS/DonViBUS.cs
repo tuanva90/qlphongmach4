@@ -29,36 +29,36 @@ namespace BUS
             }
         }
         public void insert(DonViDTO bn)
-        {           
-            if (bn.DonViTinh=="")
+        {
+            if (bn.DonViTinh == "")
             {
                 MessageBox.Show(" Nhập tên đơn vị tính !");
             }
             else
             {
                 DonViDTO[] dv = dvdao.getList();
-                if(dv!=null||dv.Length==0)
+                if (dv != null || dv.Length == 0)
                 {
                     bool check = false; // kieim tra trung ten
-                        for (int i = 0; i < dv.Length; i++)
+                    for (int i = 0; i < dv.Length; i++)
+                    {
+                        if (bn.DonViTinh.Equals(dv[i].DonViTinh.ToString()))
                         {
-                            if (bn.DonViTinh.Equals(dv[i].DonViTinh.ToString()))
-                            {                               
-                                check = true;
-                                break;
-                            }
+                            check = true;
+                            break;
                         }
-                        if (check != true)
-                        {
-                            int result = dvdao.insert(bn);
-                            if (result > 0)
-                                MessageBox.Show(" Thêm đơn vị tính thành công !");
-                            else
-                                MessageBox.Show(" Thêm đơn vị tính thất bại !");
-                        }
+                    }
+                    if (check != true)
+                    {
+                        int result = dvdao.insert(bn);
+                        if (result > 0)
+                            MessageBox.Show(" Thêm đơn vị tính thành công !");
                         else
-                            MessageBox.Show(" Tên đơn vị tính đã tồn tại !");
-                }             
+                            MessageBox.Show(" Thêm đơn vị tính thất bại !");
+                    }
+                    else
+                        MessageBox.Show(" Tên đơn vị tính đã tồn tại !");
+                }
                 else
                 {
                     int result = dvdao.insert(bn);
@@ -68,6 +68,10 @@ namespace BUS
                         MessageBox.Show(" Thêm đơn vị tính thất bại !");
                 }
             }
+        }
+        public DonViDTO getByPrimaryKey(int madonvi)
+        {
+            return dvdao.getByPrimaryKey(madonvi);
         }
         public void update(DonViDTO bn)
         {
