@@ -51,8 +51,23 @@ namespace DAO
                     list[i].TenLoaiThuoc = dt.Rows[i]["TenLoaiThuoc"].ToString();
                     list[i].MaDonViTinh = int.Parse(dt.Rows[i]["MaDonViTinh"].ToString());
                     list[i].DonGia= float.Parse(dt.Rows[i]["DonGia"].ToString());
-                    list[i].SoLuong = int.Parse(dt.Rows[i]["SoLuong"].ToString());
-                    list[i].SLToiThieu = int.Parse(dt.Rows[i]["SLToiThieu"].ToString());                   
+                    try
+                    {
+                        list[i].SoLuong = int.Parse(dt.Rows[i]["SoLuong"].ToString());
+                    }
+                    catch
+                    {
+                        list[i].SoLuong=0;
+                    }
+                    try
+                    {
+                        list[i].SLToiThieu = int.Parse(dt.Rows[i]["SLToiThieu"].ToString());
+                    }
+                    catch
+                    {
+                        list[i].SLToiThieu = 0;
+                    }
+
                 }
             }
             return list;
@@ -63,7 +78,7 @@ namespace DAO
             string sql = " select * from LOAITHUOC Where MaLoaiThuoc=@MaLoaiThuoc ";
             SqlParameter sp = new SqlParameter("@MaLoaiThuoc", maloaithuoc);
             DataTable dt = new DataTable();
-            dt = conectData.LoadData(sql);
+            dt = conectData.LoadData(sql,sp);
             if (dt == null || dt.Rows.Count == 0)
                 return null;
             else
@@ -72,8 +87,8 @@ namespace DAO
                 loaithuoc.TenLoaiThuoc = dt.Rows[0]["TenLoaiThuoc"].ToString();
                 loaithuoc.MaDonViTinh = int.Parse(dt.Rows[0]["MaDonViTinh"].ToString());
                 loaithuoc.DonGia = float.Parse(dt.Rows[0]["DonGia"].ToString());
-                loaithuoc.SoLuong = int.Parse(dt.Rows[0]["SoLuong"].ToString());
-                loaithuoc.SLToiThieu = int.Parse(dt.Rows[0]["SLToiThieu"].ToString());
+               // loaithuoc.SoLuong = float.Parse(dt.Rows[0]["SoLuong"].ToString());
+              //  loaithuoc.SLToiThieu = float.Parse(dt.Rows[0]["SLToiThieu"].ToString());
 
             }
             return loaithuoc;

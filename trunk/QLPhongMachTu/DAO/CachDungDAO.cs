@@ -20,7 +20,7 @@ namespace DAO
             sp[2] = new SqlParameter("@Trua", cd.Trua);
             sp[3] = new SqlParameter("@Chieu", cd.Chieu);
             sp[4] = new SqlParameter("@Toi", cd.Toi);
-            sp[5] = new SqlParameter("@GhiChu", cd.Toi);
+            sp[5] = new SqlParameter("@GhiChu", cd.GhiChu);
             return conectData.Insert_Update_Delete(sql, sp);
         }
         public int update(CachDungDTO cd)
@@ -32,7 +32,7 @@ namespace DAO
             sp[2] = new SqlParameter("@Trua", cd.Trua);
             sp[3] = new SqlParameter("@Chieu", cd.Chieu);
             sp[4] = new SqlParameter("@Toi", cd.Toi);
-            sp[5] = new SqlParameter("@GhiChu", cd.Toi);
+            sp[5] = new SqlParameter("@GhiChu", cd.GhiChu);
             sp[6] = new SqlParameter("@MaCachDung", cd.MaCachDung);
             return conectData.Insert_Update_Delete(sql, sp);
         }
@@ -67,20 +67,34 @@ namespace DAO
             string sql = " select * from CACHDUNG Where MaCachDung=@MaCachDung ";
             SqlParameter sp = new SqlParameter("@MaCachDung", macachdung);
             DataTable dt = new DataTable();
-            dt = conectData.LoadData(sql);
+            dt = conectData.LoadData(sql,sp);
             if (dt == null || dt.Rows.Count == 0)
                 return null;
             else
             {
                  cachdung.MaCachDung = int.Parse(dt.Rows[0]["MaCachDung"].ToString());
                 cachdung.CachDung = dt.Rows[0]["CachDung"].ToString();
-                cachdung.Sang = int.Parse(dt.Rows[0]["Sang"].ToString());
-                cachdung.Trua = int.Parse(dt.Rows[0]["Trua"].ToString());
-                cachdung.Chieu = int.Parse(dt.Rows[0]["Chieu"].ToString());
-                cachdung.Toi = int.Parse(dt.Rows[0]["Toi"].ToString());
-               
+                cachdung.Sang = float.Parse(dt.Rows[0]["Sang"].ToString());
+                cachdung.Trua = float.Parse(dt.Rows[0]["Trua"].ToString());
+                cachdung.Chieu = float.Parse(dt.Rows[0]["Chieu"].ToString());
+                cachdung.Toi = float.Parse(dt.Rows[0]["Toi"].ToString());
+                cachdung.GhiChu = dt.Rows[0]["GhiChu"].ToString();
             }
             return cachdung;
+        }
+        public int getMaxMaCachDung()// list of all benhnhan
+        {
+            int ma;
+            string sql = " select MAX(MaCachDung) from CACHDUNG ";           
+            DataTable dt = new DataTable();
+            dt = conectData.LoadData(sql);
+                       if (dt.Rows[0][0].ToString().Equals("") || dt.Rows[0][0].ToString().Equals(null))
+                return 1;
+            else
+            {
+                   ma = int.Parse(dt.Rows[0][0].ToString());              
+             }
+            return ma;
         }
         public int delete(int magv)
         {
