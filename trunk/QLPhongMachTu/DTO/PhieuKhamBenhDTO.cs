@@ -7,24 +7,31 @@ namespace DTO
 {
     public class PhieuKhamBenhDTO
     {
-        private int _MaPhieuKhamBenh;
-        private string _MaDSKB;
+        private string _MaPhieuKhamBenh;
+        private string _MaBenhNhan;
+        private string _NgayKham;       
         private string _TrieuChung;
         private int _MaLoaiBenh;
         private int _MaLoaiBenhPhu;
+
+        public string NgayKham
+        {
+            get { return _NgayKham; }
+            set { _NgayKham = value; }
+        }
         public PhieuKhamBenhDTO()
         {
         }
-        public int MaPhieuKhamBenh
+        public string MaPhieuKhamBenh
         {
             get { return _MaPhieuKhamBenh; }
             set { _MaPhieuKhamBenh = value; }
         }
        
-        public string MaDSKB
+        public string MaBenhNhan
         {
-            get { return _MaDSKB; }
-            set { _MaDSKB = value; }
+            get { return _MaBenhNhan; }
+            set { _MaBenhNhan = value; }
         }
        
         public string TrieuChung

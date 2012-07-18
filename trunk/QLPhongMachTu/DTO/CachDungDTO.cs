@@ -9,10 +9,10 @@ namespace DTO
     {
         private int _MaCachDung;
         private string _CachDung;
-        private int _Sang;
-        private int _Trua;
-        private int _Chieu;
-        private int _Toi;
+        private float _Sang;
+        private float _Trua;
+        private float _Chieu;
+        private float _Toi;
         private string _GhiChu;
         public CachDungDTO()
         {
@@ -22,27 +22,27 @@ namespace DTO
         {
             get { return _GhiChu; }
             set { _GhiChu = value; }
-        }     
+        }
 
-        public int Toi
+        public float Toi
         {
             get { return _Toi; }
             set { _Toi = value; }
         }
 
-        public int Chieu
+        public float Chieu
         {
             get { return _Chieu; }
             set { _Chieu = value; }
         }
 
-        public int Trua
+        public float Trua
         {
             get { return _Trua; }
             set { _Trua = value; }
         }
 
-        public int Sang
+        public float Sang
         {
             get { return _Sang; }
             set { _Sang = value; }
