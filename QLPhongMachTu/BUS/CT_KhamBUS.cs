@@ -13,7 +13,7 @@ namespace BUS
         private CT_KhamDAO dvdao = new CT_KhamDAO();
         private CachDungDAO cddao = new CachDungDAO();
         private LoaiThuocDAO tdao = new LoaiThuocDAO();
-        private DonViDAO donvidao = new DonViDAO();
+        private DonViDAO donvidao = new DonViDAO();    
         public void showInListView(ListView lv, CT_KhamDTO[] listbn)
         {
             if (lv.Items.Count > 0)
@@ -28,7 +28,49 @@ namespace BUS
                     lvi.SubItems.Add(donvidao.getByPrimaryKey(int.Parse(tdao.getByPrimaryKey(int.Parse(listbn[i].MaLoaiThuoc.ToString())).MaDonViTinh.ToString())).DonViTinh.ToString());
                     lvi.SubItems.Add(listbn[i].SoLuong.ToString());
                     lvi.SubItems.Add(listbn[i].MaCachDung.ToString());
-                    lvi.SubItems.Add(listbn[i].MaLoaiThuoc.ToString()); 
+                    lvi.SubItems.Add(listbn[i].MaLoaiThuoc.ToString());
+                    lvi.SubItems.Add(cddao.getByPrimaryKey(int.Parse(listbn[i].MaCachDung.ToString())).CachDung.ToString());
+                    lvi.SubItems.Add(cddao.getByPrimaryKey(int.Parse(listbn[i].MaCachDung.ToString())).GhiChu.ToString());
+                    lv.Items.Add(lvi);
+                }
+            }
+        }
+        public void showInListView1(ListView lv, CT_KhamDTO[] listbn) // dung de show cac ctkham cua mot benh nhân trong tat ca cac ngày
+        {
+            if (lv.Items.Count > 0)
+                lv.Items.Clear();
+            if (listbn != null)
+            {
+                int stt;
+                for (int i = 0; i < listbn.Length; i++)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    stt = 1;
+                    lvi.Text = (i + 1).ToString();
+                    if (i > 0)
+                    {
+                        if (listbn[i].MaPhieuKhamBenh.ToString().Substring(5).ToString() == listbn[i - 1].MaPhieuKhamBenh.Substring(5).ToString())
+                        {
+                            lvi.SubItems.Add("");
+                            lvi.Text = "";
+                        }
+                        else
+                        {
+                            lvi.SubItems.Add(listbn[i].MaPhieuKhamBenh.ToString().Substring(5).ToString());
+                            stt++;
+                            lvi.Text = stt.ToString();
+                        }
+                    }
+                    else
+                    {                       
+                        lvi.SubItems.Add(listbn[i].MaPhieuKhamBenh.ToString().Substring(5).ToString());
+                        lvi.Text = stt.ToString();
+                    }
+                    lvi.SubItems.Add(tdao.getByPrimaryKey(int.Parse(listbn[i].MaLoaiThuoc.ToString())).TenLoaiThuoc.ToString());
+                    lvi.SubItems.Add(donvidao.getByPrimaryKey(int.Parse(tdao.getByPrimaryKey(int.Parse(listbn[i].MaLoaiThuoc.ToString())).MaDonViTinh.ToString())).DonViTinh.ToString());
+                    lvi.SubItems.Add(listbn[i].SoLuong.ToString());
+                    lvi.SubItems.Add(cddao.getByPrimaryKey(int.Parse(listbn[i].MaCachDung.ToString())).CachDung.ToString());
+                    lvi.SubItems.Add(cddao.getByPrimaryKey(int.Parse(listbn[i].MaCachDung.ToString())).GhiChu.ToString());
                     lv.Items.Add(lvi);
                 }
             }
@@ -36,6 +78,10 @@ namespace BUS
         public CT_KhamDTO[] getListByMaPhieuKham(string maphieukham)
         {
             return dvdao.getListByMaPhieuKham(maphieukham);
+        }
+        public CT_KhamDTO[] getListByBenhNhan(string mabenhnhan)
+        {
+            return dvdao.getListMaBenhNhan(mabenhnhan);
         }
         public void insert(CT_KhamDTO bn, CachDungDTO cddto)
         {
@@ -46,7 +92,7 @@ namespace BUS
                 bn.MaCachDung = cddto.MaCachDung;
                 int result1 = dvdao.insert(bn);
                 if (result1 > 0)
-                {
+                {                    
                     MessageBox.Show(" Thêm thành công ! ");
                 }
                 else

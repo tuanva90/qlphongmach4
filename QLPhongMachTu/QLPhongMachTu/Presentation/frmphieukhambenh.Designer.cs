@@ -58,6 +58,9 @@
             this.cmbloaithuoc = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.exp1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.lvdsbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -103,8 +106,6 @@
             this.lblmabenhnhan = new System.Windows.Forms.Label();
             this.lbMaBenhNhan = new System.Windows.Forms.Label();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.btndonthuocganday = new DevComponents.DotNetBar.ButtonX();
             this.lvDonThuoc = new System.Windows.Forms.ListView();
             this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -112,8 +113,20 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.btndonthuocganday = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.lvdonthuocganday = new System.Windows.Forms.ListView();
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.navigationPane1.SuspendLayout();
             this.navigationPanePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtimengaykham)).BeginInit();
@@ -124,6 +137,7 @@
             this.panel.SuspendLayout();
             this.groupPanel3.SuspendLayout();
             this.expandablePanel2.SuspendLayout();
+            this.expandablePanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navigationPane1
@@ -489,7 +503,7 @@
             // 
             this.lbldonvi.AutoSize = true;
             this.lbldonvi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldonvi.Location = new System.Drawing.Point(126, 41);
+            this.lbldonvi.Location = new System.Drawing.Point(131, 41);
             this.lbldonvi.Name = "lbldonvi";
             this.lbldonvi.Size = new System.Drawing.Size(52, 15);
             this.lbldonvi.TabIndex = 25;
@@ -510,7 +524,7 @@
             "9"});
             this.cmbsoluong.Location = new System.Drawing.Point(83, 38);
             this.cmbsoluong.Name = "cmbsoluong";
-            this.cmbsoluong.Size = new System.Drawing.Size(39, 23);
+            this.cmbsoluong.Size = new System.Drawing.Size(46, 23);
             this.cmbsoluong.TabIndex = 24;
             this.cmbsoluong.Text = "1";
             this.cmbsoluong.SelectedIndexChanged += new System.EventHandler(this.cmbsoluong_SelectedIndexChanged);
@@ -553,11 +567,16 @@
             // 
             this.exp1.CanvasColor = System.Drawing.SystemColors.Control;
             this.exp1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.exp1.Controls.Add(this.panelEx4);
+            this.exp1.Controls.Add(this.labelX10);
+            this.exp1.Controls.Add(this.buttonX1);
             this.exp1.Controls.Add(this.lvdsbenhnhan);
+            this.exp1.Expanded = false;
+            this.exp1.ExpandedBounds = new System.Drawing.Rectangle(9, 41, 344, 285);
             this.exp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exp1.Location = new System.Drawing.Point(9, 39);
+            this.exp1.Location = new System.Drawing.Point(9, 41);
             this.exp1.Name = "exp1";
-            this.exp1.Size = new System.Drawing.Size(344, 285);
+            this.exp1.Size = new System.Drawing.Size(344, 26);
             this.exp1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.exp1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.exp1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -575,6 +594,43 @@
             this.exp1.TitleStyle.GradientAngle = 90;
             this.exp1.TitleText = "Danh sách BN khám trong ngày";
             // 
+            // panelEx4
+            // 
+            this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx4.Location = new System.Drawing.Point(230, 33);
+            this.panelEx4.Name = "panelEx4";
+            this.panelEx4.Size = new System.Drawing.Size(34, 16);
+            this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx4.Style.BackColor1.Color = System.Drawing.Color.Yellow;
+            this.panelEx4.Style.BackColor2.Color = System.Drawing.Color.Yellow;
+            this.panelEx4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx4.Style.GradientAngle = 90;
+            this.panelEx4.TabIndex = 37;
+            // 
+            // labelX10
+            // 
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
+            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.Location = new System.Drawing.Point(49, 28);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(183, 23);
+            this.labelX10.TabIndex = 36;
+            this.labelX10.Text = "Bệnh nhân chưa lập phiếu kham";
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonX1.Location = new System.Drawing.Point(264, 3);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(58, 20);
+            this.buttonX1.TabIndex = 35;
+            this.buttonX1.Text = "Cập nhật";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
             // lvdsbenhnhan
             // 
             this.lvdsbenhnhan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -588,9 +644,9 @@
             this.lvdsbenhnhan.Font = new System.Drawing.Font("Times New Roman", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvdsbenhnhan.FullRowSelect = true;
             this.lvdsbenhnhan.GridLines = true;
-            this.lvdsbenhnhan.Location = new System.Drawing.Point(3, 25);
+            this.lvdsbenhnhan.Location = new System.Drawing.Point(3, 55);
             this.lvdsbenhnhan.Name = "lvdsbenhnhan";
-            this.lvdsbenhnhan.Size = new System.Drawing.Size(338, 260);
+            this.lvdsbenhnhan.Size = new System.Drawing.Size(338, 230);
             this.lvdsbenhnhan.TabIndex = 11;
             this.lvdsbenhnhan.UseCompatibleStateImageBehavior = false;
             this.lvdsbenhnhan.View = System.Windows.Forms.View.Details;
@@ -1079,13 +1135,11 @@
             // 
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel3.Controls.Add(this.buttonX1);
-            this.groupPanel3.Controls.Add(this.btndonthuocganday);
             this.groupPanel3.Controls.Add(this.lvDonThuoc);
             this.groupPanel3.Controls.Add(this.expandablePanel2);
-            this.groupPanel3.Location = new System.Drawing.Point(371, 194);
+            this.groupPanel3.Location = new System.Drawing.Point(371, 239);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(638, 441);
+            this.groupPanel3.Size = new System.Drawing.Size(638, 397);
             // 
             // 
             // 
@@ -1109,28 +1163,6 @@
             this.groupPanel3.TabIndex = 33;
             this.groupPanel3.Click += new System.EventHandler(this.groupPanel3_Click);
             // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonX1.Location = new System.Drawing.Point(213, 383);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(125, 48);
-            this.buttonX1.TabIndex = 32;
-            this.buttonX1.Text = "Đơn thuốc gần đây";
-            // 
-            // btndonthuocganday
-            // 
-            this.btndonthuocganday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btndonthuocganday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btndonthuocganday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndonthuocganday.Location = new System.Drawing.Point(61, 383);
-            this.btndonthuocganday.Name = "btndonthuocganday";
-            this.btndonthuocganday.Size = new System.Drawing.Size(125, 48);
-            this.btndonthuocganday.TabIndex = 31;
-            this.btndonthuocganday.Text = "Đơn thuốc gần đây";
-            // 
             // lvDonThuoc
             // 
             this.lvDonThuoc.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1139,13 +1171,15 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader14});
             this.lvDonThuoc.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvDonThuoc.FullRowSelect = true;
             this.lvDonThuoc.GridLines = true;
-            this.lvDonThuoc.Location = new System.Drawing.Point(3, 26);
+            this.lvDonThuoc.Location = new System.Drawing.Point(3, 22);
             this.lvDonThuoc.Name = "lvDonThuoc";
-            this.lvDonThuoc.Size = new System.Drawing.Size(620, 352);
+            this.lvDonThuoc.Size = new System.Drawing.Size(620, 349);
             this.lvDonThuoc.TabIndex = 10;
             this.lvDonThuoc.UseCompatibleStateImageBehavior = false;
             this.lvDonThuoc.View = System.Windows.Forms.View.Details;
@@ -1155,7 +1189,7 @@
             // 
             this.columnHeader0.Text = "STT";
             this.columnHeader0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader0.Width = 80;
+            this.columnHeader0.Width = 40;
             // 
             // columnHeader1
             // 
@@ -1177,14 +1211,23 @@
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "macachdung";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader4.Width = 0;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "mathuoc";
             this.columnHeader5.Width = 0;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Cách dùng";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 150;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Ghi chú";
+            this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader14.Width = 120;
             // 
             // expandablePanel2
             // 
@@ -1219,11 +1262,23 @@
             this.expandablePanel2.TitleStyle.GradientAngle = 90;
             this.expandablePanel2.TitleText = "Kết quả khám";
             // 
+            // btndonthuocganday
+            // 
+            this.btndonthuocganday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btndonthuocganday.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btndonthuocganday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndonthuocganday.Location = new System.Drawing.Point(238, 33);
+            this.btndonthuocganday.Name = "btndonthuocganday";
+            this.btndonthuocganday.Size = new System.Drawing.Size(128, 25);
+            this.btndonthuocganday.TabIndex = 31;
+            this.btndonthuocganday.Text = "Đơn thuốc gần đây";
+            this.btndonthuocganday.Click += new System.EventHandler(this.btndonthuocganday_Click);
+            // 
             // panelEx3
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelEx3.Location = new System.Drawing.Point(378, 186);
+            this.panelEx3.Location = new System.Drawing.Point(378, 223);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.Size = new System.Drawing.Size(445, 33);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -1237,11 +1292,106 @@
             this.panelEx3.TabIndex = 32;
             this.panelEx3.Text = "Đơn thuốc";
             // 
+            // expandablePanel1
+            // 
+            this.expandablePanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.expandablePanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.expandablePanel1.Controls.Add(this.lvdonthuocganday);
+            this.expandablePanel1.Controls.Add(this.btndonthuocganday);
+            this.expandablePanel1.Expanded = false;
+            this.expandablePanel1.ExpandedBounds = new System.Drawing.Rectangle(370, 189, 639, 446);
+            this.expandablePanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expandablePanel1.Location = new System.Drawing.Point(370, 189);
+            this.expandablePanel1.Name = "expandablePanel1";
+            this.expandablePanel1.Size = new System.Drawing.Size(639, 26);
+            this.expandablePanel1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.expandablePanel1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.expandablePanel1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.expandablePanel1.Style.GradientAngle = 90;
+            this.expandablePanel1.TabIndex = 34;
+            this.expandablePanel1.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel1.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel1.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel1.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
+            this.expandablePanel1.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.expandablePanel1.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.expandablePanel1.TitleStyle.GradientAngle = 90;
+            this.expandablePanel1.TitleText = "Xem đơn thuốc gần đây";
+            this.expandablePanel1.ExpandedChanging += new DevComponents.DotNetBar.ExpandChangeEventHandler(this.expandablePanel1_ExpandedChanging);
+            this.expandablePanel1.ExpandedChanged += new DevComponents.DotNetBar.ExpandChangeEventHandler(this.expandablePanel1_ExpandedChanged);
+            this.expandablePanel1.Click += new System.EventHandler(this.expandablePanel1_Click);
+            // 
+            // lvdonthuocganday
+            // 
+            this.lvdonthuocganday.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader15,
+            this.columnHeader23,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18,
+            this.columnHeader21,
+            this.columnHeader22});
+            this.lvdonthuocganday.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvdonthuocganday.FullRowSelect = true;
+            this.lvdonthuocganday.GridLines = true;
+            this.lvdonthuocganday.Location = new System.Drawing.Point(5, 64);
+            this.lvdonthuocganday.Name = "lvdonthuocganday";
+            this.lvdonthuocganday.Size = new System.Drawing.Size(624, 371);
+            this.lvdonthuocganday.TabIndex = 11;
+            this.lvdonthuocganday.UseCompatibleStateImageBehavior = false;
+            this.lvdonthuocganday.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "STT";
+            this.columnHeader15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader15.Width = 40;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Ngày khám";
+            this.columnHeader23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader23.Width = 100;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Thuốc";
+            this.columnHeader16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader16.Width = 150;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Đơn Vị";
+            this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader17.Width = 100;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Số Lượng";
+            this.columnHeader18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader18.Width = 100;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Cách dùng";
+            this.columnHeader21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader21.Width = 150;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Ghi chú";
+            this.columnHeader22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader22.Width = 120;
+            // 
             // frmphieukhambenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 642);
+            this.Controls.Add(this.expandablePanel1);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.panelEx1);
@@ -1267,6 +1417,7 @@
             this.groupPanel3.ResumeLayout(false);
             this.expandablePanel2.ResumeLayout(false);
             this.expandablePanel2.PerformLayout();
+            this.expandablePanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1323,7 +1474,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private System.Windows.Forms.Label label13;
         private DevComponents.DotNetBar.Controls.GroupPanel grlaythuoc;
@@ -1346,7 +1496,6 @@
         private System.Windows.Forms.TextBox txttoi;
         private System.Windows.Forms.TextBox txtchieu;
         private System.Windows.Forms.TextBox txttrua;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX btndonthuocganday;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtimengaykham;
         private System.Windows.Forms.Label lbldongia;
@@ -1357,7 +1506,22 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private DevComponents.DotNetBar.ExpandablePanel expandablePanel1;
+        private System.Windows.Forms.ListView lvdonthuocganday;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.PanelEx panelEx4;
+        private DevComponents.DotNetBar.LabelX labelX10;
 
     }
 }

@@ -30,7 +30,8 @@ namespace QLPhongMachTu
         }
         private void btnthuoc_Click(object sender, EventArgs e)
         {
-           
+            Presentation.frmLoaiThuoc frm = new Presentation.frmLoaiThuoc();
+            frm.ShowDialog();
         }
 
         private void btnloaibenh_Click(object sender, EventArgs e)
@@ -95,7 +96,8 @@ namespace QLPhongMachTu
 
         private void btnqlhoadon_Click(object sender, EventArgs e)
         {
-            
+            Presentation.frmhoadon frm = new Presentation.frmhoadon();
+            frm.ShowDialog();
         }
 
         private void btnphieukham_Click(object sender, EventArgs e)
@@ -121,7 +123,8 @@ namespace QLPhongMachTu
 
         private void btndonthuoc_Click(object sender, EventArgs e)
         {
-            
+            Presentation.frmdonthuoc frm = new Presentation.frmdonthuoc();
+            frm.ShowDialog();
         }
 
         private void btndsbn_Click(object sender, EventArgs e)
@@ -135,7 +138,8 @@ namespace QLPhongMachTu
 
         private void btndtn_Click(object sender, EventArgs e)
         {
-            
+            Presentation.frmbaocaothuoc frm = new Presentation.frmbaocaothuoc();
+            frm.ShowDialog();
         }
 
         private void btnbct_Click(object sender, EventArgs e)

@@ -42,7 +42,8 @@ namespace QLPhongMachTu.Presentation
         private void frmphieukhambenh_Load(object sender, EventArgs e)
         {           
             dtimengaykham.Text = DateTime.Now.ToShortDateString();
-            bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(),"in"));
+           // bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(),"in"));
+            bnbus.showBNChuaLapPhieuKham(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"),dtimengaykham.Text.ToString());
             // do du lieu len commbobox
             BindingSource bindingSource1 = new BindingSource();
             bindingSource1.DataSource = lbbus.getList();
@@ -105,8 +106,7 @@ namespace QLPhongMachTu.Presentation
 
         private void dtimengaykham_Click(object sender, EventArgs e)
         {
-            if (lvDonThuoc.Items.Count > 0)
-                lvDonThuoc.Items.Clear();
+           
         }
 
         private void dtimengaykham_TextChanged(object sender, EventArgs e)
@@ -126,7 +126,8 @@ namespace QLPhongMachTu.Presentation
             lblngaysinh.Text = "";
             lbldiachi.Text = "";
             exp1.TitleText = "Danh sách BN khám trong ngày";
-            bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"));
+            bnbus.showBNChuaLapPhieuKham(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
+            lvdonthuocganday.Items.Clear();
         }
 
         private void btnlapphieukham_Click(object sender, EventArgs e)
@@ -141,8 +142,8 @@ namespace QLPhongMachTu.Presentation
                 {
                     btnlapphieukham.Enabled = false;
                     btnsuaphieukham.Enabled = true;
-                    grlaythuoc.Enabled = true;                   
-                }
+                    grlaythuoc.Enabled = true;
+                    bnbus.showBNChuaLapPhieuKham(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());                }
         }
 
         private void cbloaibenhchinh_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,7 +153,9 @@ namespace QLPhongMachTu.Presentation
 
         private void lvdsbenhnhan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbloaithuoc_SelectedIndexChanged(sender, e);
+                lvdonthuocganday.Items.Clear();
+                expandablePanel1.Expanded = false;
+                cmbloaithuoc_SelectedIndexChanged(sender, e);
                 if (this.lvdsbenhnhan.SelectedItems.Count > 0)
                 {
                     pkbdto = new PhieuKhamBenhDTO();
@@ -188,6 +191,8 @@ namespace QLPhongMachTu.Presentation
                                 cbloaibenhchinh.Text = lbbus.getByPrimaryKey(pkbdto.MaLoaiBenh).TenLoaiBenh.ToString();
                                 cbloaibenhphu.Text = lbbus.getByPrimaryKey(pkbdto.MaLoaiBenhPhu).TenLoaiBenh.ToString();
                                 ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
+                                txttrieuchung.Text = "";
+                               // ctkbus.showInListView1(lvdonthuocganday, ctkbus.getListByBenhNhan(lblmabenhnhan.Text.ToString()));
                             }
                             exp1.TitleText = " Bệnh nhân : " + lblmabenhnhan.Text;
                             // tuy chinh menu them, xoa , sua don thuoc
@@ -239,33 +244,48 @@ namespace QLPhongMachTu.Presentation
                btXoa.Enabled = true;
                btThem.Enabled = false;
                btnhuy.Enabled = true;
+               lbldongia.Text = ltbus.getByPrimaryKey(int.Parse(cmbloaithuoc.SelectedValue.ToString())).DonGia.ToString();
             }
         }
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            ctkdto = new CT_KhamDTO();
-            cddto = new CachDungDTO();
-            ctkdto.MaPhieuKhamBenh = lblmabenhnhan.Text.ToString() + dtimengaykham.Text;
-            ctkdto.DonGia = 2000; // hard code vì chua lay duoc don gia tu bang loai thuoc.
-            ctkdto.MaLoaiThuoc = int.Parse(cmbloaithuoc.SelectedValue.ToString());
-            ctkdto.SoLuong = float.Parse(cmbsoluong.Text.ToString());
-  
-            cddto.CachDung = txtcachdung.Text.ToString();
-            cddto.GhiChu = txtghichu.Text.ToString();
-            cddto.Sang = float.Parse(txtsang.Text.ToString());
-            cddto.Trua = float.Parse(txttrua.Text.ToString());
-            cddto.Chieu = float.Parse(txtchieu.Text.ToString());
-            cddto.Toi = float.Parse(txttoi.Text.ToString());
-
-            ctkbus.insert(ctkdto, cddto);
-            if (float.Parse(cmbsoluong.Text.ToString()) == 0)
+            if (pkbbus.getByPrimaryKey(lblmabenhnhan.Text.ToString(), dtimengaykham.Text.ToString()) != null)
             {
-                MessageBox.Show(" Số lượng thuốc kê đơn phải >0 !");
+                MessageBox.Show(" Hóa đơn trong ngày của bệnh nhân này đã được lập, không thể kê thêm thuốc !");
             }
             else
             {
-                ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
+                if (float.Parse(cmbsoluong.Text.ToString()) > ltbus.getByPrimaryKey(int.Parse(cmbloaithuoc.SelectedValue.ToString())).SoLuong)
+                {
+                    MessageBox.Show(" Số lượng loại thuốc này trong kho không đủ !");
+                }
+                else
+                {
+                    ctkdto = new CT_KhamDTO();
+                    cddto = new CachDungDTO();
+                    ctkdto.MaPhieuKhamBenh = lblmabenhnhan.Text.ToString() + dtimengaykham.Text;
+                    ctkdto.DonGia = float.Parse(lbldongia.Text.ToString());
+                    ctkdto.MaLoaiThuoc = int.Parse(cmbloaithuoc.SelectedValue.ToString());
+                    ctkdto.SoLuong = float.Parse(cmbsoluong.Text.ToString());
+
+                    cddto.CachDung = txtcachdung.Text.ToString();
+                    cddto.GhiChu = txtghichu.Text.ToString();
+                    cddto.Sang = float.Parse(txtsang.Text.ToString());
+                    cddto.Trua = float.Parse(txttrua.Text.ToString());
+                    cddto.Chieu = float.Parse(txtchieu.Text.ToString());
+                    cddto.Toi = float.Parse(txttoi.Text.ToString());
+
+                    ctkbus.insert(ctkdto, cddto);
+                    if (float.Parse(cmbsoluong.Text.ToString()) == 0)
+                    {
+                        MessageBox.Show(" Số lượng thuốc kê đơn phải >0 !");
+                    }
+                    else
+                    {
+                        ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
+                    }
+                }
             }
         }
 
@@ -390,7 +410,7 @@ namespace QLPhongMachTu.Presentation
             {            
                 int madonvitinh = ltbus.getByPrimaryKey(int.Parse(cmbloaithuoc.SelectedValue.ToString())).MaDonViTinh;
                 lbldonvi.Text = dvbus.getByPrimaryKey(madonvitinh).DonViTinh.ToString();
-                lbldongia.Text = (float.Parse(cmbsoluong.Text.ToString()) * float.Parse(ltbus.getByPrimaryKey(int.Parse(cmbloaithuoc.SelectedValue.ToString())).DonGia.ToString())).ToString();
+                lbldongia.Text = ltbus.getByPrimaryKey(int.Parse(cmbloaithuoc.SelectedValue.ToString())).DonGia.ToString();
             }
             catch
             {
@@ -465,6 +485,28 @@ namespace QLPhongMachTu.Presentation
             {
                 cmbsoluong.Text = "1";
             }
+        }
+
+        private void expandablePanel1_ExpandedChanging(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)
+        {
+        }
+
+        private void expandablePanel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btndonthuocganday_Click(object sender, EventArgs e)
+        {
+            ctkbus.showInListView1(lvdonthuocganday, ctkbus.getListByBenhNhan(lblmabenhnhan.Text.ToString()));
+        }
+
+        private void expandablePanel1_ExpandedChanged(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)
+        {   }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            bnbus.showBNChuaLapPhieuKham(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
         }
 
     }

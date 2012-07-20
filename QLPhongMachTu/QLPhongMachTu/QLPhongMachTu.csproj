@@ -64,6 +64,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PhongMachTuDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmbaocaothuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmbaocaothuoc.Designer.cs">
+      <DependentUpon>frmbaocaothuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmhoadon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmhoadon.Designer.cs">
+      <DependentUpon>frmhoadon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,12 @@
     <Compile Include="Presentation\frmbenhnhan.designer.cs">
       <DependentUpon>frmbenhnhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmdonthuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmdonthuoc.Designer.cs">
+      <DependentUpon>frmdonthuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmdonvi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +105,12 @@
     </Compile>
     <Compile Include="Presentation\frmloaibenh.Designer.cs">
       <DependentUpon>frmloaibenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmLoaiThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmLoaiThuoc.Designer.cs">
+      <DependentUpon>frmLoaiThuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\frmphieukhambenh.cs">
       <SubType>Form</SubType>
@@ -108,17 +132,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\frmbaocaothuoc.resx">
+      <DependentUpon>frmbaocaothuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmhoadon.resx">
+      <DependentUpon>frmhoadon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmbenhnhan.resx">
       <DependentUpon>frmbenhnhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmdonthuoc.resx">
+      <DependentUpon>frmdonthuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmdonvi.resx">
       <DependentUpon>frmdonvi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmloaibenh.resx">
       <DependentUpon>frmloaibenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmLoaiThuoc.resx">
+      <DependentUpon>frmLoaiThuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmphieukhambenh.resx">
       <DependentUpon>frmphieukhambenh.cs</DependentUpon>

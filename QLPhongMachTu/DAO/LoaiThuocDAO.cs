@@ -12,25 +12,40 @@ namespace DAO
         private ConectData conectData = new ConectData();
         public int insert(LoaiThuocDTO cd)
         {
-            string sql = "insert into LOAITHUOC values (@TenLoaiThuoc,@MaDonViTinh,@DonGia,@SoLuong,@SLToiThieu)";
-            SqlParameter[] sp = new SqlParameter[5];
+            string sql = "insert into LOAITHUOC values (@TenLoaiThuoc,@MaDonViTinh,@DonGia,@SoLuong)";
+            SqlParameter[] sp = new SqlParameter[4];
             sp[0] = new SqlParameter("@TenLoaiThuoc", cd.TenLoaiThuoc);
             sp[1] = new SqlParameter("@MaDonViTinh", cd.MaDonViTinh);
             sp[2] = new SqlParameter("@DonGia", cd.DonGia);
             sp[3] = new SqlParameter("@SoLuong", cd.SoLuong);
-            sp[4] = new SqlParameter("@SLToiThieu", cd.SLToiThieu);
             return conectData.Insert_Update_Delete(sql, sp);
         }
         public int update(LoaiThuocDTO cd)
         {
-            string sql = "update LOAITHUOC set TenLoaiThuoc=@TenLoaiThuoc, MaDonViTinh=@MaDonViTinh, DonGia=@DonGia, SoLuong=@SoLuong, SLToiThieu=@SLToiThieu where MaLoaiThuoc=@MaLoaiThuoc";
+            string sql = "update LOAITHUOC set TenLoaiThuoc=@TenLoaiThuoc, MaDonViTinh=@MaDonViTinh, DonGia=@DonGia, SoLuong=@SoLuong where MaLoaiThuoc=@MaLoaiThuoc";
             SqlParameter[] sp = new SqlParameter[6];
             sp[0] = new SqlParameter("@TenLoaiThuoc", cd.TenLoaiThuoc);
             sp[1] = new SqlParameter("@MaDonViTinh", cd.MaDonViTinh);
             sp[2] = new SqlParameter("@DonGia", cd.DonGia);
             sp[3] = new SqlParameter("@SoLuong", cd.SoLuong);
-            sp[4] = new SqlParameter("@SLToiThieu", cd.SLToiThieu);
-            sp[5] = new SqlParameter("@MaLoaiThuoc", cd.MaLoaiThuoc);
+            sp[4] = new SqlParameter("@MaLoaiThuoc", cd.MaLoaiThuoc);
+            return conectData.Insert_Update_Delete(sql, sp);
+        }
+        public int updateSoLuong(LoaiThuocDTO cd)
+        {
+            string sql = "update LOAITHUOC set SoLuong=@SoLuong where MaLoaiThuoc=@MaLoaiThuoc";
+            SqlParameter[] sp = new SqlParameter[2];           
+            sp[0] = new SqlParameter("@SoLuong", cd.SoLuong);
+            sp[1] = new SqlParameter("@MaLoaiThuoc", cd.MaLoaiThuoc);
+            return conectData.Insert_Update_Delete(sql, sp);
+        }
+        public int updateTenThuoc(LoaiThuocDTO cd)
+        {
+            string sql = "update LOAITHUOC set TenLoaiThuoc=@SoLuong, MaDonViTinh=@MaDonViTinh where MaLoaiThuoc=@MaLoaiThuoc";
+            SqlParameter[] sp = new SqlParameter[3];
+            sp[0] = new SqlParameter("@SoLuong", cd.TenLoaiThuoc);
+            sp[1] = new SqlParameter("@MaDonViTinh", cd.MaDonViTinh);
+            sp[2] = new SqlParameter("@MaLoaiThuoc", cd.MaLoaiThuoc);
             return conectData.Insert_Update_Delete(sql, sp);
         }
         public LoaiThuocDTO[] getList()// list of all loaithuoc
@@ -58,16 +73,30 @@ namespace DAO
                     catch
                     {
                         list[i].SoLuong=0;
-                    }
-                    try
-                    {
-                        list[i].SLToiThieu = int.Parse(dt.Rows[i]["SLToiThieu"].ToString());
-                    }
-                    catch
-                    {
-                        list[i].SLToiThieu = 0;
-                    }
+                    }                  
 
+                }
+            }
+            return list;
+        }
+        public LoaiThuocDTO[] getBaoCaoThuocTheoNgay(string ngaybaocao)// list of all loaithuoc
+        {
+            LoaiThuocDTO[] list;
+            string sql = " select ctk.MaLoaiThuoc ,sum(ctk.SoLuong) as SoLuong from CT_KHAM ctk, HOADON hd";
+            sql += " where ctk.MaPhieuKhamBenh=hd.MaPhieuKhamBenh and hd.TienThuoc>0 and substring(ctk.MaPhieuKhamBenh,6,10)=@ngay group by ctk.MaLoaiThuoc order by SoLuong DESC ";
+            DataTable dt = new DataTable();
+            SqlParameter sp = new SqlParameter("@ngay", ngaybaocao);
+            dt = conectData.LoadData(sql,sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                list = new LoaiThuocDTO[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list[i] = new LoaiThuocDTO();
+                    list[i].MaLoaiThuoc = int.Parse(dt.Rows[i]["MaLoaiThuoc"].ToString());                 
+                     list[i].SoLuong = int.Parse(dt.Rows[i]["SoLuong"].ToString());                    
                 }
             }
             return list;
@@ -87,8 +116,7 @@ namespace DAO
                 loaithuoc.TenLoaiThuoc = dt.Rows[0]["TenLoaiThuoc"].ToString();
                 loaithuoc.MaDonViTinh = int.Parse(dt.Rows[0]["MaDonViTinh"].ToString());
                 loaithuoc.DonGia = float.Parse(dt.Rows[0]["DonGia"].ToString());
-               // loaithuoc.SoLuong = float.Parse(dt.Rows[0]["SoLuong"].ToString());
-              //  loaithuoc.SLToiThieu = float.Parse(dt.Rows[0]["SLToiThieu"].ToString());
+                loaithuoc.SoLuong = float.Parse(dt.Rows[0]["SoLuong"].ToString());              
 
             }
             return loaithuoc;

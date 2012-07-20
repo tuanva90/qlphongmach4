@@ -238,9 +238,9 @@
             // labelX2
             // 
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
-            this.labelX2.Location = new System.Drawing.Point(41, 42);
+            this.labelX2.Location = new System.Drawing.Point(32, 42);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(67, 23);
+            this.labelX2.Size = new System.Drawing.Size(77, 23);
             this.labelX2.TabIndex = 3;
             this.labelX2.Text = "Tên loại bệnh :";
             // 

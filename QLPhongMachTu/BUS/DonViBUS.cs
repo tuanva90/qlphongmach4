@@ -133,5 +133,9 @@ namespace BUS
                 }
             }
         }
+        public DonViDTO[] getList()
+        {
+            return dvdao.getList();
+        }
     }
 }

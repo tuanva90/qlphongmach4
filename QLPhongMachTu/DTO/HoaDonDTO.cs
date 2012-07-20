@@ -8,8 +8,8 @@ namespace DTO
    public class HoaDonDTO
        {
            private int _SoHoaDon;
-           private int _MaPhieuKhamBenh;
-           private float _TiemKham;
+           private string _MaPhieuKhamBenh;
+           private float _TienKham;
            private float _TienThuoc;
            public HoaDonDTO()
            {
@@ -20,13 +20,13 @@ namespace DTO
                set { _TienThuoc = value; }
            }
 
-           public float TiemKham
+           public float TienKham
            {
-               get { return _TiemKham; }
-               set { _TiemKham = value; }
+               get { return _TienKham; }
+               set { _TienKham = value; }
            }
 
-           public int MaPhieuKhamBenh
+           public string MaPhieuKhamBenh
            {
                get { return _MaPhieuKhamBenh; }
                set { _MaPhieuKhamBenh = value; }
