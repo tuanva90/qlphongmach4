@@ -6,11 +6,14 @@ using DTO;
 using DAO;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
 namespace BUS
 {
     public class BenhNhanBUS
     {
-        private BenhNhanDAO bndao = new BenhNhanDAO();  
+        private BenhNhanDAO bndao = new BenhNhanDAO();
+        private PhieuKhamBenhDAO pkbdao = new PhieuKhamBenhDAO();
+        private HoaDonDAO hddao = new HoaDonDAO();
         public void showInListView(ListView lv, BenhNhanDTO[] listbn)
         {            
             if (lv.Items.Count > 0)
@@ -27,6 +30,50 @@ namespace BUS
                     lvi.SubItems.Add(listbn[i].NamSinh.ToString());
                     lvi.SubItems.Add(listbn[i].SoDienThoai.ToString());
                     lvi.SubItems.Add(listbn[i].DiaChi.ToString());
+                    lv.Items.Add(lvi);
+                }
+            }
+        }
+        public void showBNChuaLapPhieuKham(ListView lv, BenhNhanDTO[] listbn, string ngaykham)
+        {
+            if (lv.Items.Count > 0)
+                lv.Items.Clear();
+            if (listbn != null)
+            {
+                for (int i = 0; i < listbn.Length; i++)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = (i + 1).ToString();
+                    lvi.SubItems.Add(listbn[i].MaBenhNhan.ToString());
+                    lvi.SubItems.Add(listbn[i].HoTen.ToString());
+                    lvi.SubItems.Add(listbn[i].GioiTinh.ToString());
+                    lvi.SubItems.Add(listbn[i].NamSinh.ToString());
+                    lvi.SubItems.Add(listbn[i].SoDienThoai.ToString());
+                    lvi.SubItems.Add(listbn[i].DiaChi.ToString());
+                    if (pkbdao.getByPrimaryKey(listbn[i].MaBenhNhan.ToString() + ngaykham) == null)
+                        lvi.BackColor = Color.Yellow;
+                    lv.Items.Add(lvi);
+                }
+            }
+        }
+        public void showBNChuaLapHD(ListView lv, BenhNhanDTO[] listbn, string ngaykham)
+        {
+            if (lv.Items.Count > 0)
+                lv.Items.Clear();
+            if (listbn != null)
+            {
+                for (int i = 0; i < listbn.Length; i++)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = (i + 1).ToString();
+                    lvi.SubItems.Add(listbn[i].MaBenhNhan.ToString());
+                    lvi.SubItems.Add(listbn[i].HoTen.ToString());
+                    lvi.SubItems.Add(listbn[i].GioiTinh.ToString());
+                    lvi.SubItems.Add(listbn[i].NamSinh.ToString());
+                    lvi.SubItems.Add(listbn[i].SoDienThoai.ToString());
+                    lvi.SubItems.Add(listbn[i].DiaChi.ToString());
+                    if(hddao.getByPrimaryKey(listbn[i].MaBenhNhan.ToString() + ngaykham)==null)
+                        lvi.BackColor = Color.Yellow;
                     lv.Items.Add(lvi);
                 }
             }
@@ -51,8 +98,9 @@ namespace BUS
                     lvi.SubItems.Add(bn.DiaChi.ToString());
                     lv.Items.Add(lvi);            }
         }           
-         public void insert(BenhNhanDTO bn)
+         public int insert(BenhNhanDTO bn)
         {
+            int result=0;
             bn.MaBenhNhan = bndao.getMaBenhNhan();
             if (bn.HoTen == "" || bn.NamSinh == "" || bn.GioiTinh == "" || bn.DiaChi == "")
             {
@@ -60,17 +108,25 @@ namespace BUS
             }
             else
             {
-                if (int.Parse(bn.NamSinh) < 1800 || int.Parse(bn.NamSinh) > 2012)
-                    MessageBox.Show(" Năm sinh bệnh nhân không hợp lệ");
-                else
+                try
                 {
-                    int result = bndao.insert(bn);
-                    if (result > 0)
-                        MessageBox.Show(" Thêm bệnh nhân : " + bn.MaBenhNhan + " thành công !");
+                    if (int.Parse(bn.NamSinh) < 1800 || int.Parse(bn.NamSinh) > 2012)
+                        MessageBox.Show(" Năm sinh bệnh nhân không hợp lệ");
                     else
-                        MessageBox.Show(" Thêm bệnh nhân : " + bn.MaBenhNhan + " thất bại !");
+                    {
+                        result = bndao.insert(bn);
+                        if (result > 0)
+                            MessageBox.Show(" Thêm bệnh nhân : " + bn.MaBenhNhan + " thành công !");
+                        else
+                            MessageBox.Show(" Thêm bệnh nhân : " + bn.MaBenhNhan + " thất bại !");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show(" Năm sinh không hợp lệ !");
                 }
             }
+            return result;
         }
          public void update(BenhNhanDTO bn)
          {
@@ -118,6 +174,10 @@ namespace BUS
         public BenhNhanDTO[] getListByDSKB(string ngaykham, string option)// list of all benhnhan da co trong danh sach kham benh hay chua : option = in : da co trong dskb cua ngay, option = not in : chua co trong dskb trong ngay
         {
             return bndao.getListByDSKB(ngaykham, option);
+        }
+        public BenhNhanDTO[] getListByPhieuKham(string ngaykham, string option)// lay danh sach benh nhan co trong danh sach kham benh nhung chua duoc lap hoa don !
+        {
+            return bndao.getListByPhieuKham(ngaykham, option);
         }
         public BenhNhanDTO getByPrimaryKey(string mabn)
         {

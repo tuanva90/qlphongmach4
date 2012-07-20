@@ -11,6 +11,7 @@ using BUS;
 using DTO;
 using System.Text.RegularExpressions;
 
+
 namespace QLPhongMachTu
 {
     public partial class frmbenhnhan : Form
@@ -30,16 +31,34 @@ namespace QLPhongMachTu
 
         private void btnthembenhnhan_Click(object sender, EventArgs e)
         {
-            bndto.HoTen = txthotenbenhnhan.Text.ToString();
-            bndto.GioiTinh = cmbgioitinh.Text.ToString();
-            bndto.NamSinh = txtnamsinh.Text.ToString();
-            bndto.SoDienThoai = txtsodienthoai.Text.ToString();
-            bndto.DiaChi = txtdiachi.Text.ToString();
-            bnbus.insert(bndto);
-            bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getList());
-            btnthembenhnhan.Enabled = true;
-            btnxoa.Enabled = false;
-            btnsua.Enabled = false;           
+            Regex re = new Regex(@"0\d{9,10}");
+            if (re.IsMatch(txtsodienthoai.Text) == false && txtsodienthoai.Text != "")
+            {
+                MessageBox.Show(" Định dạng số điện thoại chưa đúng !");
+                txtsodienthoai.Focus();
+            }
+            else
+            {
+                Regex re1 = new Regex(@"^[1-2]\d{3}");
+                if (re1.IsMatch(txtnamsinh.Text) == false && txtnamsinh.Text != "")
+                {
+                    MessageBox.Show("Định dạng năm sinh chưa đúng !");
+                    txtnamsinh.Focus();
+                }
+                else
+                {
+                    bndto.HoTen = txthotenbenhnhan.Text.ToString();
+                    bndto.GioiTinh = cmbgioitinh.Text.ToString();
+                    bndto.NamSinh = txtnamsinh.Text.ToString();
+                    bndto.SoDienThoai = txtsodienthoai.Text.ToString();
+                    bndto.DiaChi = txtdiachi.Text.ToString();
+                    bnbus.insert(bndto);
+                    bnbus.showInListView(lvDanhSachBenhNhan, bnbus.getList());
+                    btnthembenhnhan.Enabled = true;
+                    btnxoa.Enabled = false;
+                    btnsua.Enabled = false;
+                }
+            }
         }
         public void refresh()
         {
@@ -206,12 +225,7 @@ namespace QLPhongMachTu
 
         private void txtsodienthoai_TextChanged(object sender, EventArgs e)
         {
-            Regex re = new Regex(@"^[\w\s]+$");
-            if (re.IsMatch(txthotenbenhnhan.Text) == false && txthotenbenhnhan.Text != "")
-            {
-                MessageBox.Show(" Bạn vừa nhập kí tự đặc biệt, nhập lai !");
-               txtsodienthoai.Clear();
-            }   
+            
         }       
     }
 }

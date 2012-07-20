@@ -471,6 +471,7 @@
             // 
             this.txtsodienthoai.Border.Class = "TextBoxBorder";
             this.txtsodienthoai.Location = new System.Drawing.Point(79, 211);
+            this.txtsodienthoai.MaxLength = 11;
             this.txtsodienthoai.Name = "txtsodienthoai";
             this.txtsodienthoai.Size = new System.Drawing.Size(134, 20);
             this.txtsodienthoai.TabIndex = 20;
@@ -491,6 +492,7 @@
             // 
             this.txtnamsinh.Border.Class = "TextBoxBorder";
             this.txtnamsinh.Location = new System.Drawing.Point(79, 172);
+            this.txtnamsinh.MaxLength = 4;
             this.txtnamsinh.Name = "txtnamsinh";
             this.txtnamsinh.Size = new System.Drawing.Size(134, 20);
             this.txtnamsinh.TabIndex = 18;

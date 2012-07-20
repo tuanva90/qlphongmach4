@@ -155,6 +155,31 @@ namespace DAO
            }
            return list;
        }
+       public BenhNhanDTO[] getListByPhieuKham(string ngaykham, string optinon)// get list benh nhan da duoc lap phieu kham trong ngay.
+       {
+           BenhNhanDTO[] list;
+           string sql = "select * from BENHNHAN where MaBenhNhan in (select MaBenhNhan from DANHSACHKHAMBENH where NgayKham=@NgayKham and MaBenhNhan " + optinon + " (select MaBenhNhan from PHIEUKHAMBENH where NgayKham=@NgayKham))";
+           DataTable dt = new DataTable();
+           SqlParameter sp = new SqlParameter("@NgayKham", ngaykham);
+           dt = conectData.LoadData(sql, sp);
+           if (dt == null || dt.Rows.Count == 0)
+               return null;
+           else
+           {
+               list = new BenhNhanDTO[dt.Rows.Count];
+               for (int i = 0; i < dt.Rows.Count; i++)
+               {
+                   list[i] = new BenhNhanDTO();
+                   list[i].MaBenhNhan = dt.Rows[i]["MaBenhNhan"].ToString();
+                   list[i].HoTen = dt.Rows[i]["HoTen"].ToString();
+                   list[i].GioiTinh = dt.Rows[i]["GioiTinh"].ToString();
+                   list[i].NamSinh = dt.Rows[i]["NamSinh"].ToString();
+                   list[i].DiaChi = dt.Rows[i]["DiaChi"].ToString();
+                   list[i].SoDienThoai = dt.Rows[i]["SoDienThoai"].ToString();
+               }
+           }
+           return list;
+       }
        public int delete(string magv)
        {
            string sql;

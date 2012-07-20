@@ -48,6 +48,7 @@
     <Compile Include="HoaDonDTO.cs" />
     <Compile Include="LoaiBenhDTO.cs" />
     <Compile Include="LoaiThuocDTO.cs" />
+    <Compile Include="NhapKhoDTO.cs" />
     <Compile Include="PhieuKhamBenhDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -259,7 +259,7 @@
             this.tabControlPanel2.Location = new System.Drawing.Point(0, 26);
             this.tabControlPanel2.Name = "tabControlPanel2";
             this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel2.Size = new System.Drawing.Size(264, 441);
+            this.tabControlPanel2.Size = new System.Drawing.Size(264, 447);
             this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
             this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
             this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -284,7 +284,7 @@
             this.groupPanel3.Controls.Add(this.lvdskhambenh);
             this.groupPanel3.Location = new System.Drawing.Point(325, 63);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(629, 413);
+            this.groupPanel3.Size = new System.Drawing.Size(636, 422);
             // 
             // 
             // 
@@ -320,9 +320,9 @@
             this.lvdskhambenh.Font = new System.Drawing.Font("Times New Roman", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvdskhambenh.FullRowSelect = true;
             this.lvdskhambenh.GridLines = true;
-            this.lvdskhambenh.Location = new System.Drawing.Point(3, 26);
+            this.lvdskhambenh.Location = new System.Drawing.Point(2, 24);
             this.lvdskhambenh.Name = "lvdskhambenh";
-            this.lvdskhambenh.Size = new System.Drawing.Size(617, 374);
+            this.lvdskhambenh.Size = new System.Drawing.Size(624, 385);
             this.lvdskhambenh.TabIndex = 9;
             this.lvdskhambenh.UseCompatibleStateImageBehavior = false;
             this.lvdskhambenh.View = System.Windows.Forms.View.Details;
@@ -380,7 +380,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(264, 467);
+            this.tabControl1.Size = new System.Drawing.Size(264, 473);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
             this.tabControl1.Tabs.Add(this.tabItem1);
@@ -395,7 +395,7 @@
             this.tabControlPanel1.Location = new System.Drawing.Point(0, 26);
             this.tabControlPanel1.Name = "tabControlPanel1";
             this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(264, 441);
+            this.tabControlPanel1.Size = new System.Drawing.Size(264, 447);
             this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
             this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
             this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -444,7 +444,7 @@
             this.grpthongtin.Controls.Add(this.labelX1);
             this.grpthongtin.Location = new System.Drawing.Point(4, 25);
             this.grpthongtin.Name = "grpthongtin";
-            this.grpthongtin.Size = new System.Drawing.Size(251, 412);
+            this.grpthongtin.Size = new System.Drawing.Size(251, 413);
             // 
             // 
             // 
@@ -486,9 +486,12 @@
             // 
             this.txtsodienthoai.Border.Class = "TextBoxBorder";
             this.txtsodienthoai.Location = new System.Drawing.Point(79, 211);
+            this.txtsodienthoai.MaxLength = 11;
             this.txtsodienthoai.Name = "txtsodienthoai";
             this.txtsodienthoai.Size = new System.Drawing.Size(134, 20);
             this.txtsodienthoai.TabIndex = 20;
+            this.txtsodienthoai.TextChanged += new System.EventHandler(this.txtsodienthoai_TextChanged);
+            this.txtsodienthoai.Leave += new System.EventHandler(this.txtsodienthoai_Leave);
             // 
             // labelX8
             // 
@@ -505,9 +508,11 @@
             // 
             this.txtnamsinh.Border.Class = "TextBoxBorder";
             this.txtnamsinh.Location = new System.Drawing.Point(79, 172);
+            this.txtnamsinh.MaxLength = 4;
             this.txtnamsinh.Name = "txtnamsinh";
             this.txtnamsinh.Size = new System.Drawing.Size(134, 20);
             this.txtnamsinh.TabIndex = 18;
+            this.txtnamsinh.TextChanged += new System.EventHandler(this.txtnamsinh_TextChanged);
             // 
             // cmbgioitinh
             // 
