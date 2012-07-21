@@ -17,7 +17,7 @@ namespace BUS
             LoaiBenhDTO[] list = dao.getList();
             if (lv.Items.Count > 0)
                 lv.Items.Clear();
-            if (list != null || list.Length==0)
+            if (list != null)
             {
                 for (int i = 0; i < list.Length; i++)
                 {
@@ -43,7 +43,7 @@ namespace BUS
                     bool check = false; // kieim tra trung ten
                     for (int i = 0; i < dv.Length; i++)
                     {
-                        if (dto.TenLoaiBenh.Equals(dv[i].TenLoaiBenh.ToString()))
+                        if (string.Equals(dto.TenLoaiBenh,dv[i].TenLoaiBenh.ToString()))
                         {
                             check = true;
                             break;
@@ -90,7 +90,7 @@ namespace BUS
                         bool check = false; // kieim tra trung ten
                         for (int i = 0; i < dv.Length; i++)
                         {
-                            if (dto.TenLoaiBenh == (dv[i].TenLoaiBenh.ToString()))
+                            if (string.Equals(dto.TenLoaiBenh,dv[i].TenLoaiBenh.ToString()))
                             {
                                 check = true;
                                 break;
