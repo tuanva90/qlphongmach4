@@ -18,6 +18,7 @@ namespace QLPhongMachTu.Presentation
         LoaiThuocBUS ltbus = new LoaiThuocBUS();
         CachDungBUS cdbus = new CachDungBUS();
         DonViBUS dvbus = new DonViBUS();
+        HoaDonBUS hdbus = new HoaDonBUS();
         CachDungDTO cddto;
         CT_KhamBUS ctkbus = new CT_KhamBUS();
         CT_KhamDTO ctkdto;
@@ -250,42 +251,41 @@ namespace QLPhongMachTu.Presentation
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            if (pkbbus.getByPrimaryKey(lblmabenhnhan.Text.ToString(), dtimengaykham.Text.ToString()) != null)
+            if (hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString()+dtimengaykham.Text.ToString()) != null)
             {
                 MessageBox.Show(" Hóa đơn trong ngày của bệnh nhân này đã được lập, không thể kê thêm thuốc !");
             }
             else
             {
-                if (float.Parse(cmbsoluong.Text.ToString()) > ltbus.getByPrimaryKey(int.Parse(cmbloaithuoc.SelectedValue.ToString())).SoLuong)
-                {
-                    MessageBox.Show(" Số lượng loại thuốc này trong kho không đủ !");
-                }
-                else
-                {
-                    ctkdto = new CT_KhamDTO();
-                    cddto = new CachDungDTO();
-                    ctkdto.MaPhieuKhamBenh = lblmabenhnhan.Text.ToString() + dtimengaykham.Text;
-                    ctkdto.DonGia = float.Parse(lbldongia.Text.ToString());
-                    ctkdto.MaLoaiThuoc = int.Parse(cmbloaithuoc.SelectedValue.ToString());
-                    ctkdto.SoLuong = float.Parse(cmbsoluong.Text.ToString());
+                  DialogResult result;
+             result = MessageBox.Show("Số lượng loại thuốc này trong kho không đủ, bạn vẫn muốn kê thuốc này cho bệnh nhân ???", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+             if (result == DialogResult.Yes)
+             {
 
-                    cddto.CachDung = txtcachdung.Text.ToString();
-                    cddto.GhiChu = txtghichu.Text.ToString();
-                    cddto.Sang = float.Parse(txtsang.Text.ToString());
-                    cddto.Trua = float.Parse(txttrua.Text.ToString());
-                    cddto.Chieu = float.Parse(txtchieu.Text.ToString());
-                    cddto.Toi = float.Parse(txttoi.Text.ToString());
+                 ctkdto = new CT_KhamDTO();
+                 cddto = new CachDungDTO();
+                 ctkdto.MaPhieuKhamBenh = lblmabenhnhan.Text.ToString() + dtimengaykham.Text;
+                 ctkdto.DonGia = float.Parse(lbldongia.Text.ToString());
+                 ctkdto.MaLoaiThuoc = int.Parse(cmbloaithuoc.SelectedValue.ToString());
+                 ctkdto.SoLuong = float.Parse(cmbsoluong.Text.ToString());
 
-                    ctkbus.insert(ctkdto, cddto);
-                    if (float.Parse(cmbsoluong.Text.ToString()) == 0)
-                    {
-                        MessageBox.Show(" Số lượng thuốc kê đơn phải >0 !");
-                    }
-                    else
-                    {
-                        ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
-                    }
-                }
+                 cddto.CachDung = txtcachdung.Text.ToString();
+                 cddto.GhiChu = txtghichu.Text.ToString();
+                 cddto.Sang = float.Parse(txtsang.Text.ToString());
+                 cddto.Trua = float.Parse(txttrua.Text.ToString());
+                 cddto.Chieu = float.Parse(txtchieu.Text.ToString());
+                 cddto.Toi = float.Parse(txttoi.Text.ToString());
+
+                 ctkbus.insert(ctkdto, cddto);
+                 if (float.Parse(cmbsoluong.Text.ToString()) == 0)
+                 {
+                     MessageBox.Show(" Số lượng thuốc kê đơn phải >0 !");
+                 }
+                 else
+                 {
+                     ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
+                 }
+             }
             }
         }
 

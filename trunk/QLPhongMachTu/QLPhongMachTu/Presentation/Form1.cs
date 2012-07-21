@@ -118,7 +118,8 @@ namespace QLPhongMachTu
 
         private void btntimkiem_Click(object sender, EventArgs e)
         {
-            
+            Presentation.frmtimkiem frm = new Presentation.frmtimkiem();
+            frm.ShowDialog();
         }
 
         private void btndonthuoc_Click(object sender, EventArgs e)
@@ -144,7 +145,8 @@ namespace QLPhongMachTu
 
         private void btnbct_Click(object sender, EventArgs e)
         {
-           
+            Presentation.frmbaocaothang frm = new Presentation.frmbaocaothang();
+            frm.ShowDialog();
         }
 
         private void btnhd_Click(object sender, EventArgs e)
