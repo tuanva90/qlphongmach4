@@ -71,6 +71,31 @@ namespace BUS
                 }
             }
         }
+        public void showBaoCaoThang(ListView lv, int thang, int nam)
+        {
+            LoaiThuocDTO[] list = dao.getBaoCaoThuocTheoThang(thang,nam);
+            if (lv.Items.Count > 0)
+                lv.Items.Clear();
+            if (list != null)
+            {
+                for (int i = 0; i < list.Length; i++)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = (i + 1).ToString();
+                    lvi.SubItems.Add(list[i].MaLoaiThuoc.ToString());
+                    int mathuoc = int.Parse(list[i].MaLoaiThuoc.ToString());
+                    lvi.SubItems.Add(dao.getByPrimaryKey(mathuoc).TenLoaiThuoc.ToString());
+                    lvi.SubItems.Add(dvdao.getByPrimaryKey(int.Parse(dao.getByPrimaryKey(mathuoc).MaDonViTinh.ToString())).DonViTinh.ToString());
+                    lvi.SubItems.Add(list[i].SoLuong.ToString() + "/" + dao.getByPrimaryKey(mathuoc).SoLuong.ToString());
+                    if (i < 10)
+                    {
+                        lvi.BackColor = Color.SpringGreen;
+                    }
+
+                    lv.Items.Add(lvi);
+                }
+            }
+        }
         public void nhapkho(NhapKhoDTO nk)
         {
             int result1 = 0;
@@ -104,7 +129,7 @@ namespace BUS
                     bool check = false; // kieim tra trung ten
                     for (int i = 0; i < dv.Length; i++)
                     {
-                        if (dto.TenLoaiThuoc.Equals(dv[i].TenLoaiThuoc.ToString()))
+                        if (string.Equals(dto.TenLoaiThuoc,dv[i].TenLoaiThuoc.ToString()))
                         {
                             check = true;
                             break;

@@ -42,7 +42,7 @@ namespace BUS
                     bool check = false; // kieim tra trung ten
                     for (int i = 0; i < dv.Length; i++)
                     {
-                        if (bn.DonViTinh.Equals(dv[i].DonViTinh.ToString()))
+                        if (string.Equals(bn.DonViTinh,dv[i].DonViTinh.ToString()))
                         {
                             check = true;
                             break;
@@ -87,7 +87,7 @@ namespace BUS
                     bool check=false; // kieim tra trung ten
                     for (int i = 0; i < dv.Length; i++)
                     {
-                        if (bn.DonViTinh==(dv[i].DonViTinh.ToString()))
+                        if (string.Equals(bn.DonViTinh,dv[i].DonViTinh.ToString()))
                         {                           
                             check = true;
                             break;

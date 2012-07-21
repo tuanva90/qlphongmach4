@@ -6,11 +6,32 @@ using DTO;
 using DAO;
 using System.Data;
 using System.Windows.Forms;
+using DTO;
 namespace BUS
 {
    public class PhieuKhamBenhBUS
     {
-        private PhieuKhamBenhDAO dvdao = new PhieuKhamBenhDAO();       
+        private PhieuKhamBenhDAO dvdao = new PhieuKhamBenhDAO();
+        private LoaiBenhBUS lbbus = new LoaiBenhBUS();
+        public void showPKByBenhNhan(ListView lv, string mabn)
+        {
+            PhieuKhamBenhDTO[] list = dvdao.getListByBenhNhan(mabn);
+            if (lv.Items.Count > 0)
+                lv.Items.Clear();
+            if (list != null)
+            {
+                for (int i = 0; i < list.Length; i++)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = (i + 1).ToString();
+                    lvi.SubItems.Add(list[i].NgayKham.ToString());
+                    lvi.SubItems.Add(list[i].TrieuChung.ToString());
+                    lvi.SubItems.Add(lbbus.getByPrimaryKey(int.Parse(list[i].MaLoaiBenh.ToString())).TenLoaiBenh.ToString());
+                    lvi.SubItems.Add(lbbus.getByPrimaryKey(int.Parse(list[i].MaLoaiBenhPhu.ToString())).TenLoaiBenh.ToString());                   
+                    lv.Items.Add(lvi);
+                }
+            }
+        }
         public int insert(PhieuKhamBenhDTO bn)
         {
             if (((bn.MaLoaiBenh == bn.MaLoaiBenhPhu)&&bn.MaLoaiBenh!=1) || (bn.MaLoaiBenhPhu != 1 && bn.MaLoaiBenh == 1))
@@ -71,6 +92,10 @@ namespace BUS
                     MessageBox.Show(" Xóa thất bại !");
                 }
             }
+        }
+        public PhieuKhamBenhDTO[] getListByNgayKham(string ngaykham)
+        {
+            return dvdao.getListByNgayKham(ngaykham);
         }
       
     }
