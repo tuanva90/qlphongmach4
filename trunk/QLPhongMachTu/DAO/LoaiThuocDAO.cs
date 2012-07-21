@@ -101,6 +101,30 @@ namespace DAO
             }
             return list;
         }
+        public LoaiThuocDTO[] getBaoCaoThuocTheoThang(int thang, int nam)// list of all loaithuoc
+        {
+            LoaiThuocDTO[] list;
+            string sql = " select ctk.MaLoaiThuoc ,sum(ctk.SoLuong) as SoLuong from CT_KHAM ctk, HOADON hd";
+            sql += " where ctk.MaPhieuKhamBenh=hd.MaPhieuKhamBenh and hd.TienThuoc>0 and left(Substring(hd.MaPhieuKhamBenh,6,10),Charindex('/',Substring(hd.MaPhieuKhamBenh,6,10),0)-1)=@thang and right(Substring(hd.MaPhieuKhamBenh,6,10),4)=@nam group by ctk.MaLoaiThuoc order by SoLuong DESC ";
+            DataTable dt = new DataTable();
+            SqlParameter[] sp = new SqlParameter[2];
+            sp[0] = new SqlParameter("@thang", thang);
+            sp[1] = new SqlParameter("@nam", nam);
+            dt = conectData.LoadData(sql, sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                list = new LoaiThuocDTO[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list[i] = new LoaiThuocDTO();
+                    list[i].MaLoaiThuoc = int.Parse(dt.Rows[i]["MaLoaiThuoc"].ToString());
+                    list[i].SoLuong = int.Parse(dt.Rows[i]["SoLuong"].ToString());
+                }
+            }
+            return list;
+        }
         public LoaiThuocDTO getByPrimaryKey(int maloaithuoc)// list of all benhnhan
         {
             LoaiThuocDTO loaithuoc = new LoaiThuocDTO();

@@ -45,5 +45,50 @@ namespace DAO
             }
             return hd;
         }
+        public HoaDonDTO[] getBaoCaoThang(int thang, int nam)//lâp bao cao thang, lay danh sach tat ca cac benh nhan co kham trong thang, năm...
+        {
+            HoaDonDTO[] list;
+            string sql = " select MaPhieuKhamBenh from HOADON where left(Substring(MaPhieuKhamBenh,6,10),Charindex('/',Substring(MaPhieuKhamBenh,6,10),0)-1)=@thang and right(Substring(MaPhieuKhamBenh,6,10),4)=@nam";
+            DataTable dt = new DataTable();
+           SqlParameter[] sp = new SqlParameter[2];
+             sp[0] = new SqlParameter("@thang", thang);
+             sp[1] = new SqlParameter("@nam", nam);
+            dt = conectData.LoadData(sql, sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                list = new HoaDonDTO[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list[i] = new HoaDonDTO();
+                    list[i].MaPhieuKhamBenh = dt.Rows[i]["MaPhieuKhamBenh"].ToString();
+                }
+            }
+            return list;
+        }
+        public HoaDonDTO[] getLisByBenhNhan(string mabn)//lâp bao cao thang, lay danh sach tat ca cac benh nhan co kham trong thang, năm...
+        {
+            HoaDonDTO[] list;
+            string sql = " select * from HOADON where substring(MaPhieuKhamBenh,1,5)=@MaBenhNhan";
+            DataTable dt = new DataTable();
+            SqlParameter[] sp = new SqlParameter[1];
+            sp[0] = new SqlParameter("@MaBenhNhan",mabn);
+            dt = conectData.LoadData(sql, sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                list = new HoaDonDTO[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list[i] = new HoaDonDTO();
+                    list[i].MaPhieuKhamBenh = dt.Rows[i]["MaPhieuKhamBenh"].ToString();
+                    list[i].TienKham = float.Parse(dt.Rows[i]["TienKham"].ToString());
+                    list[i].TienThuoc=float.Parse(dt.Rows[i]["TienThuoc"].ToString());
+                }
+            }
+            return list;
+        }
     }
 }

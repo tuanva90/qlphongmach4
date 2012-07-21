@@ -79,5 +79,49 @@ namespace DAO
             return result;
 
         }
+        public PhieuKhamBenhDTO[] getListByNgayKham(string ngaykham)// list of phieu kham by NgayKham và chua co trong hoa don.
+        {
+            PhieuKhamBenhDTO[] list;
+            string sql = " select MaBenhNhan from PHIEUKHAMBENH where NgayKham=@NgayKham and MaBenhNhan in  (select substring(MaPhieuKhamBenh,1,5) from HOADON where substring(MaPhieuKhamBenh,6,10)=@NgayKham)";
+            DataTable dt = new DataTable();
+            SqlParameter sp = new SqlParameter("@NgayKham", ngaykham);
+            dt = conectData.LoadData(sql, sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                list = new PhieuKhamBenhDTO[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list[i] = new PhieuKhamBenhDTO();
+                    list[i].MaBenhNhan = dt.Rows[i]["MaBenhNhan"].ToString();                   
+                }
+            }
+            return list;
+        }
+        public PhieuKhamBenhDTO[] getListByBenhNhan(string mabn)// list of phieu kham by NgayKham và chua co trong hoa don.
+        {
+            PhieuKhamBenhDTO[] list;
+            string sql = "select * from PHIEUKHAMBENH where MaBenhNhan=@mabenhnhan";
+            DataTable dt = new DataTable();
+            SqlParameter sp = new SqlParameter("@mabenhnhan", mabn);
+            dt = conectData.LoadData(sql, sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                list = new PhieuKhamBenhDTO[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list[i] = new PhieuKhamBenhDTO();
+                    list[i].MaBenhNhan = dt.Rows[i]["MaBenhNhan"].ToString();
+                    list[i].NgayKham = dt.Rows[i]["NgayKham"].ToString();
+                    list[i].TrieuChung = dt.Rows[i]["TrieuChung"].ToString();
+                    list[i].MaLoaiBenh = int.Parse(dt.Rows[i]["MaLoaiBenh"].ToString());
+                    list[i].MaLoaiBenhPhu = int.Parse(dt.Rows[i]["MaLoaiBenhPhu"].ToString());
+                }
+            }
+            return list;
+        }
     }
 }
