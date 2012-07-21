@@ -57,31 +57,12 @@ namespace DAO
                 list = new DSKBDTO[dt.Rows.Count];
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    list[i] = new DSKBDTO();
                     list[i].MaBenhNhan = dt.Rows[i]["MaBenhNhan"].ToString();
                     list[i].NgayKham = dt.Rows[i]["NgayKham"].ToString();
                 }
             }
             return list;
         }
-        public DSKBDTO[] getListByNgayKham(string ngaykham)// list of DSKB by NgayKham
-        {
-            DSKBDTO[] list;
-            string sql = " select * from DANHSACHKHAMBENH where NgayKham=@NgayKham";
-            DataTable dt = new DataTable();
-            SqlParameter sp = new SqlParameter("@NgayKham", ngaykham);
-            dt = conectData.LoadData(sql,sp);
-            if (dt == null || dt.Rows.Count == 0)
-                return null;
-            else
-            {
-                list = new DSKBDTO[dt.Rows.Count];
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    list[i].MaBenhNhan = dt.Rows[i]["MaBenhNhan"].ToString();
-                    list[i].NgayKham = dt.Rows[i]["NgayKham"].ToString();
-                }
-            }
-            return list;
-        }
-    }
+           }
 }
