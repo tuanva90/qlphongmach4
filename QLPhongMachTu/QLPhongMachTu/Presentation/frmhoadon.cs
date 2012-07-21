@@ -17,6 +17,7 @@ namespace QLPhongMachTu.Presentation
         CT_KhamBUS ctkbus = new CT_KhamBUS();
         LoaiThuocBUS lbbus = new LoaiThuocBUS();
         CT_KhamDTO[] listctk;
+        ThamSoBUS tsbus = new ThamSoBUS();
         HoaDonBUS hdbus = new HoaDonBUS();
         HoaDonDTO hddto;
         public frmhoadon()
@@ -98,7 +99,7 @@ namespace QLPhongMachTu.Presentation
            
             dtimengaykham.Text = DateTime.Now.ToShortDateString();
             bnbus.showBNChuaLapHD(lvdsbenhnhan, bnbus.getListByPhieuKham(dtimengaykham.Text.ToString(), "in"),dtimengaykham.Text.ToString());
-            lbltienkham.Text = "30000";
+            lbltienkham.Text = tsbus.getThamSo().TienKham.ToString();
 
         }
 
