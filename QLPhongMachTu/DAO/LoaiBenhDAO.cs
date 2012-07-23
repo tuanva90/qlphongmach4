@@ -79,5 +79,15 @@ namespace DAO
             }
             return list;
         }
+        public bool CheckExist(string tenLoaiBenh)
+        {
+            LoaiBenhDTO[] list = getList();
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (list[i].TenLoaiBenh.ToUpper().Equals(tenLoaiBenh.ToUpper()))
+                    return true;
+            }
+            return false;
+        }
     }
 }

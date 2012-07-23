@@ -15,15 +15,16 @@ namespace QLPhongMachTu
 {
     public partial class Form1 : Form
     {
+        public static NguoiDungDTO user = new NguoiDungDTO();
         public Form1()
         {
             InitializeComponent();
         }
-        
+
         private void btnbenhnhan_Click(object sender, EventArgs e)
-            {
-                frmbenhnhan frmbenhnhan = new frmbenhnhan();
-                frmbenhnhan.ShowDialog();       
+        {
+            frmbenhnhan frmbenhnhan = new frmbenhnhan();
+            frmbenhnhan.ShowDialog();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -42,13 +43,13 @@ namespace QLPhongMachTu
 
         private void btncachdung_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btndonvi_Click(object sender, EventArgs e)
         {
             Presentation.frmdonvi frm = new Presentation.frmdonvi();
-            frm.ShowDialog();             
+            frm.ShowDialog();
         }
 
         private void btndskb_Click(object sender, EventArgs e)
@@ -59,22 +60,22 @@ namespace QLPhongMachTu
 
         private void btnbaocaosudungthuoc_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btndoanhthutheongay_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btndtngay_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnbaocaothag_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnthaydoiquidinh_Click(object sender, EventArgs e)
@@ -83,15 +84,15 @@ namespace QLPhongMachTu
 
         private void btndsk_Click(object sender, EventArgs e)
         {
-            
+
         }
-      
+
         private void buttonItem14_Click(object sender, EventArgs e)
-        {         
-         }
+        {
+        }
 
         private void buttonItem14_Click_1(object sender, EventArgs e)
-        {     
+        {
         }
 
         private void btnqlhoadon_Click(object sender, EventArgs e)
@@ -108,7 +109,7 @@ namespace QLPhongMachTu
 
         private void btndsbb_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnhoadon_Click(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace QLPhongMachTu
 
         private void btndskhambenh_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btndtn_Click(object sender, EventArgs e)
@@ -153,15 +154,42 @@ namespace QLPhongMachTu
         {
         }
 
+        private void enableallfunction()
+        {
+        }
+
+        private void enablefunctionforbacsi()
+        {
+        }
+
+        private void enablefunctionforyta()
+        {
+        }
+
         private void btndangnhap_Click(object sender, EventArgs e)
         {
-
+            new Presentation.frmdangnhap().ShowDialog();
+            if (user != null)
+            {
+                if (user.MaPhanQuyen == 1)
+                    enableallfunction();
+                else if (user.MaPhanQuyen == 2)
+                    enablefunctionforbacsi();
+                else if (user.MaPhanQuyen == 3)
+                    enablefunctionforyta();
+                else
+                {
+                }
+                MessageBox.Show("Chúc mừng bạn đã đăng nhập thành công!", "Thông báo");
+            }
+            else
+                MessageBox.Show("Đăng nhập thất bại!", "Thông báo");
         }
         private void btndangxuat_Click(object sender, EventArgs e)
         {
-            
-            
-            
+
+
+
         }
         private void btnthoat_Click(object sender, EventArgs e)
         {
@@ -170,26 +198,26 @@ namespace QLPhongMachTu
 
         private void btnnguoidung_Click(object sender, EventArgs e)
         {
-            
+            new Presentation.frmquanlynguoidung().ShowDialog();
         }
 
         private void btndoimk_Click(object sender, EventArgs e)
         {
-            
+            new Presentation.frmdoimatkhau().ShowDialog();
         }
 
         private void btndoimatkhau_Click(object sender, EventArgs e)
         {
-          
-        }                  
+
+        }
         private void office2007StartButton1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
         {
-           
-        }       
+
+        }
     }
 }

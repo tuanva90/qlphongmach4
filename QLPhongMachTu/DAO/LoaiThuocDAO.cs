@@ -161,7 +161,17 @@ namespace DAO
                 return -2; // can't delte this CachDung, if this CachDung is not a primary key of any table =>> return -1;
             }
             return result;
+        }
 
+        public bool CheckExist(string tenLoaiThuoc)
+        {
+            LoaiThuocDTO[] list = getList();
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (list[i].TenLoaiThuoc.ToUpper().Equals(tenLoaiThuoc.ToUpper()))
+                    return true;
+            }
+            return false;
         }
     }
 }

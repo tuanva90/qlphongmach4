@@ -31,7 +31,7 @@
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.txtmatkhaucu2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtmatkhaumoi2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.rImageDangNhap = new DevComponents.DotNetBar.Controls.ReflectionImage();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -39,6 +39,7 @@
             this.btndongy = new DevComponents.DotNetBar.ButtonX();
             this.txtmatkhaumoi = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtmatkhaucu = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lbTenDangNhap = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,8 +65,9 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.lbTenDangNhap);
             this.groupPanel1.Controls.Add(this.labelX2);
-            this.groupPanel1.Controls.Add(this.txtmatkhaucu2);
+            this.groupPanel1.Controls.Add(this.txtmatkhaumoi2);
             this.groupPanel1.Controls.Add(this.rImageDangNhap);
             this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Controls.Add(this.labelX1);
@@ -107,17 +109,18 @@
             this.labelX2.TabIndex = 14;
             this.labelX2.Text = "Nhập lại mật khẩu mới :";
             // 
-            // txtmatkhaucu2
+            // txtmatkhaumoi2
             // 
             // 
             // 
             // 
-            this.txtmatkhaucu2.Border.Class = "TextBoxBorder";
-            this.txtmatkhaucu2.Location = new System.Drawing.Point(231, 107);
-            this.txtmatkhaucu2.Name = "txtmatkhaucu2";
-            this.txtmatkhaucu2.PasswordChar = '*';
-            this.txtmatkhaucu2.Size = new System.Drawing.Size(100, 20);
-            this.txtmatkhaucu2.TabIndex = 13;
+            this.txtmatkhaumoi2.Border.Class = "TextBoxBorder";
+            this.txtmatkhaumoi2.Location = new System.Drawing.Point(231, 107);
+            this.txtmatkhaumoi2.Name = "txtmatkhaumoi2";
+            this.txtmatkhaumoi2.PasswordChar = '*';
+            this.txtmatkhaumoi2.Size = new System.Drawing.Size(100, 20);
+            this.txtmatkhaumoi2.TabIndex = 2;
+            this.txtmatkhaumoi2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtmatkhaumoi2_KeyDown);
             // 
             // rImageDangNhap
             // 
@@ -128,7 +131,7 @@
             this.rImageDangNhap.BackgroundStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Square;
             this.rImageDangNhap.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
             this.rImageDangNhap.Image = global::QLPhongMachTu.Properties.Resources.doimatkhau;
-            this.rImageDangNhap.Location = new System.Drawing.Point(20, 36);
+            this.rImageDangNhap.Location = new System.Drawing.Point(20, 47);
             this.rImageDangNhap.Name = "rImageDangNhap";
             this.rImageDangNhap.Size = new System.Drawing.Size(98, 106);
             this.rImageDangNhap.TabIndex = 12;
@@ -159,7 +162,7 @@
             this.btnhuybo.Location = new System.Drawing.Point(245, 144);
             this.btnhuybo.Name = "btnhuybo";
             this.btnhuybo.Size = new System.Drawing.Size(75, 21);
-            this.btnhuybo.TabIndex = 7;
+            this.btnhuybo.TabIndex = 4;
             this.btnhuybo.Text = "Hủy bỏ";
             // 
             // btndongy
@@ -169,8 +172,9 @@
             this.btndongy.Location = new System.Drawing.Point(144, 144);
             this.btndongy.Name = "btndongy";
             this.btndongy.Size = new System.Drawing.Size(75, 21);
-            this.btndongy.TabIndex = 6;
+            this.btndongy.TabIndex = 3;
             this.btndongy.Text = "Đồng ý";
+            this.btndongy.Click += new System.EventHandler(this.btndongy_Click);
             // 
             // txtmatkhaumoi
             // 
@@ -192,8 +196,20 @@
             this.txtmatkhaucu.Border.Class = "TextBoxBorder";
             this.txtmatkhaucu.Location = new System.Drawing.Point(231, 44);
             this.txtmatkhaucu.Name = "txtmatkhaucu";
+            this.txtmatkhaucu.PasswordChar = '*';
             this.txtmatkhaucu.Size = new System.Drawing.Size(100, 20);
             this.txtmatkhaucu.TabIndex = 0;
+            // 
+            // lbTenDangNhap
+            // 
+            this.lbTenDangNhap.BackColor = System.Drawing.Color.Transparent;
+            this.lbTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenDangNhap.ForeColor = System.Drawing.Color.DeepPink;
+            this.lbTenDangNhap.Location = new System.Drawing.Point(34, 44);
+            this.lbTenDangNhap.Name = "lbTenDangNhap";
+            this.lbTenDangNhap.Size = new System.Drawing.Size(108, 23);
+            this.lbTenDangNhap.TabIndex = 15;
+            this.lbTenDangNhap.Text = "Tên đăng nhập";
             // 
             // frmdoimatkhau
             // 
@@ -206,6 +222,7 @@
             this.Name = "frmdoimatkhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đổi mật khẩu";
+            this.Load += new System.EventHandler(this.frmdoimatkhau_Load);
             this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -216,7 +233,7 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtmatkhaucu2;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtmatkhaumoi2;
         private DevComponents.DotNetBar.Controls.ReflectionImage rImageDangNhap;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX1;
@@ -224,5 +241,6 @@
         private DevComponents.DotNetBar.ButtonX btndongy;
         private DevComponents.DotNetBar.Controls.TextBoxX txtmatkhaumoi;
         private DevComponents.DotNetBar.Controls.TextBoxX txtmatkhaucu;
+        private DevComponents.DotNetBar.LabelX lbTenDangNhap;
     }
 }
