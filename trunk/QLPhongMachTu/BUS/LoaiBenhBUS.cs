@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BUS
 {
-   public class LoaiBenhBUS
+    public class LoaiBenhBUS
     {
         private LoaiBenhDAO dao = new LoaiBenhDAO();
         public void showInListView(ListView lv)
@@ -37,37 +37,18 @@ namespace BUS
             }
             else
             {
-                LoaiBenhDTO[] dv = dao.getList();
-                if (dv != null || dv.Length == 0)
-                {
-                    bool check = false; // kieim tra trung ten
-                    for (int i = 0; i < dv.Length; i++)
-                    {
-                        if (string.Equals(dto.TenLoaiBenh,dv[i].TenLoaiBenh.ToString()))
-                        {
-                            check = true;
-                            break;
-                        }
-                    }
-                    if (check != true)
-                    {
-                        int result = dao.insert(dto);
-                        if (result > 0)
-                            MessageBox.Show(" Thêm loại bệnh thành công !");
-                        else
-                            MessageBox.Show(" Thêm loại bệnh thất bại !");
-                    }
-                    else
-                        MessageBox.Show(" Tên đơn loại bệnh đã tồn tại !");
-                }
-                else
+
+                bool check = dao.CheckExist(dto.TenLoaiBenh);
+                if (check != true)
                 {
                     int result = dao.insert(dto);
                     if (result > 0)
                         MessageBox.Show(" Thêm loại bệnh thành công !");
                     else
-                        MessageBox.Show(" Thêm loại bệnh  thất bại !");
+                        MessageBox.Show(" Thêm loại bệnh thất bại !");
                 }
+                else
+                    MessageBox.Show(" Tên đơn loại bệnh đã tồn tại !");
             }
         }
         public void update(LoaiBenhDTO dto)
@@ -90,7 +71,7 @@ namespace BUS
                         bool check = false; // kieim tra trung ten
                         for (int i = 0; i < dv.Length; i++)
                         {
-                            if (string.Equals(dto.TenLoaiBenh,dv[i].TenLoaiBenh.ToString()))
+                            if (string.Equals(dto.TenLoaiBenh, dv[i].TenLoaiBenh.ToString()))
                             {
                                 check = true;
                                 break;

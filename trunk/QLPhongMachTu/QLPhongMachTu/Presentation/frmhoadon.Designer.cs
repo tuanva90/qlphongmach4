@@ -63,6 +63,7 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.exp1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.lvdsbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,15 +72,14 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.dtimengaykham = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.navigationPane1 = new DevComponents.DotNetBar.NavigationPane();
             this.navigationPanePanel1 = new DevComponents.DotNetBar.NavigationPanePanel();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.lbMaPhieuKham = new System.Windows.Forms.Label();
             this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel3.SuspendLayout();
             this.panel.SuspendLayout();
             this.exp1.SuspendLayout();
@@ -156,6 +156,7 @@
             this.btninhoadon.Size = new System.Drawing.Size(103, 42);
             this.btninhoadon.TabIndex = 42;
             this.btninhoadon.Text = "In hóa đơn";
+            this.btninhoadon.Click += new System.EventHandler(this.btninhoadon_Click);
             // 
             // label6
             // 
@@ -535,6 +536,21 @@
             this.exp1.TitleStyle.GradientAngle = 90;
             this.exp1.TitleText = "Danh sách BN khám trong ngày";
             // 
+            // panelEx4
+            // 
+            this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx4.Location = new System.Drawing.Point(215, 33);
+            this.panelEx4.Name = "panelEx4";
+            this.panelEx4.Size = new System.Drawing.Size(34, 16);
+            this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx4.Style.BackColor1.Color = System.Drawing.Color.Yellow;
+            this.panelEx4.Style.BackColor2.Color = System.Drawing.Color.Yellow;
+            this.panelEx4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx4.Style.GradientAngle = 90;
+            this.panelEx4.TabIndex = 44;
+            // 
             // lvdsbenhnhan
             // 
             this.lvdsbenhnhan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -596,6 +612,16 @@
             this.columnHeader13.Text = "Địa chỉ";
             this.columnHeader13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader13.Width = 170;
+            // 
+            // labelX10
+            // 
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
+            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.Location = new System.Drawing.Point(30, 28);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(190, 23);
+            this.labelX10.TabIndex = 43;
+            this.labelX10.Text = "Bệnh nhân chưa lập hóa đơn";
             // 
             // dtimengaykham
             // 
@@ -701,6 +727,17 @@
             this.navigationPanePanel1.Style.GradientAngle = 90;
             this.navigationPanePanel1.TabIndex = 2;
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(254, 14);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(70, 23);
+            this.buttonX1.TabIndex = 43;
+            this.buttonX1.Text = "Cập nhật DS";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
             // lbMaPhieuKham
             // 
             this.lbMaPhieuKham.AutoSize = true;
@@ -719,42 +756,6 @@
             this.buttonItem2.Name = "buttonItem2";
             this.buttonItem2.OptionGroup = "navBar";
             this.buttonItem2.Text = "     Thông Tin Bệnh Nhân";
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(254, 14);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(70, 23);
-            this.buttonX1.TabIndex = 43;
-            this.buttonX1.Text = "Cập nhật DS";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
-            // 
-            // panelEx4
-            // 
-            this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx4.Location = new System.Drawing.Point(215, 33);
-            this.panelEx4.Name = "panelEx4";
-            this.panelEx4.Size = new System.Drawing.Size(34, 16);
-            this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx4.Style.BackColor1.Color = System.Drawing.Color.Yellow;
-            this.panelEx4.Style.BackColor2.Color = System.Drawing.Color.Yellow;
-            this.panelEx4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx4.Style.GradientAngle = 90;
-            this.panelEx4.TabIndex = 44;
-            // 
-            // labelX10
-            // 
-            this.labelX10.BackColor = System.Drawing.Color.Transparent;
-            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX10.Location = new System.Drawing.Point(30, 28);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(190, 23);
-            this.labelX10.TabIndex = 43;
-            this.labelX10.Text = "Bệnh nhân chưa lập hóa đơn";
             // 
             // frmhoadon
             // 

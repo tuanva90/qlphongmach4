@@ -1,9 +1,9 @@
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\obj\Debug\ResolveAssemblyReference.cache
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\bin\Debug\BUS.dll
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\bin\Debug\BUS.pdb
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\bin\Debug\DAO.dll
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\bin\Debug\DTO.dll
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\bin\Debug\DAO.pdb
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\bin\Debug\DTO.pdb
-D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\obj\Debug\ResolveAssemblyReference.cache
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\obj\Debug\BUS.dll
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\BUS\obj\Debug\BUS.pdb

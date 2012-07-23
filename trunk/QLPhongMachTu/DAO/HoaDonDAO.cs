@@ -90,5 +90,21 @@ namespace DAO
             }
             return list;
         }
+        public DataTable getHoaDon(string mabenhnhan, string ngaykham) //lay hoa don theo dataset de in.
+        {
+
+            string sql = " select bn.MaBenhNhan, bn.HoTen, bn.GioiTinh, bn.NamSinh, substring(hd.MaPhieuKhamBenh,6,10) as NgayKham, hd.TienKham, hd.TienThuoc from BENHNHAN bn, HOADON hd where bn.MaBenhNhan = substring(hd.MaPhieuKhamBenh,1,5) and substring(hd.MaPhieuKhamBenh,6,10)=@ngay and bn.MaBenhNhan=@mabn";
+            DataTable dt = new DataTable();
+            SqlParameter[] sp = new SqlParameter[2];
+            sp[0] = new SqlParameter("@ngay", ngaykham);
+            sp[1] = new SqlParameter("@mabn", mabenhnhan);
+            dt = conectData.LoadData(sql, sp);
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                return dt;
+            }
+        }
     }
 }

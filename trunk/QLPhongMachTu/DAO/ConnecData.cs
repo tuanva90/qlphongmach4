@@ -30,6 +30,17 @@ namespace DAO
             CloseConnection();
             return dt;
         }
+        public DataSet LoadData_dataset(string sql, params SqlParameter[] sp)
+        {
+            OpenConnection();
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand secmd = new SqlCommand(sql, conn);
+            secmd.Parameters.AddRange(sp);
+            da.SelectCommand = secmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds, "mh");
+            return ds;
+        }
         public int Insert_Update_Delete(string sql, params SqlParameter[] spIns)
         {
             OpenConnection();

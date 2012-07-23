@@ -35,10 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=7.5.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -49,6 +54,8 @@
       <HintPath>C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Drawing.Design.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Log" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,16 +66,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dtshoadon.cs">
+      <DependentUpon>dtshoadon.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dtshoadon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtshoadon.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hoadonxsd.cs">
+      <DependentUpon>hoadonxsd.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hoadonxsd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hoadonxsd.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="inhoadon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inhoadon.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="KHAIBAO.cs" />
+    <Compile Include="PhongMachTuDataSet.cs">
+      <DependentUpon>PhongMachTuDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PhongMachTuDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhongMachTuDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmbaocaothang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmbaocaothang.Designer.cs">
+      <DependentUpon>frmbaocaothang.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\frmbaocaothuoc.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\frmbaocaothuoc.Designer.cs">
       <DependentUpon>frmbaocaothuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmdangnhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmdangnhap.Designer.cs">
+      <DependentUpon>frmdangnhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmdoimatkhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmdoimatkhau.Designer.cs">
+      <DependentUpon>frmdoimatkhau.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\frmhoadon.cs">
       <SubType>Form</SubType>
@@ -100,6 +154,12 @@
     <Compile Include="Presentation\frmdonvi.Designer.cs">
       <DependentUpon>frmdonvi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frminhoadon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frminhoadon.Designer.cs">
+      <DependentUpon>frminhoadon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmloaibenh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +178,12 @@
     <Compile Include="Presentation\frmphieukhambenh.Designer.cs">
       <DependentUpon>frmphieukhambenh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmquanlynguoidung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmquanlynguoidung.Designer.cs">
+      <DependentUpon>frmquanlynguoidung.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmthuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,10 +196,29 @@
     <Compile Include="Presentation\frmdanhsachkhambenh.Designer.cs">
       <DependentUpon>frmdanhsachkhambenh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmtimkiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmtimkiem.Designer.cs">
+      <DependentUpon>frmtimkiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="inhoadon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inhoadon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmbaocaothang.resx">
+      <DependentUpon>frmbaocaothang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmbaocaothuoc.resx">
       <DependentUpon>frmbaocaothuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmdangnhap.resx">
+      <DependentUpon>frmdangnhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmdoimatkhau.resx">
+      <DependentUpon>frmdoimatkhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmhoadon.resx">
       <DependentUpon>frmhoadon.cs</DependentUpon>
@@ -150,6 +235,9 @@
     <EmbeddedResource Include="Presentation\frmdonvi.resx">
       <DependentUpon>frmdonvi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frminhoadon.resx">
+      <DependentUpon>frminhoadon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmloaibenh.resx">
       <DependentUpon>frmloaibenh.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,11 +247,17 @@
     <EmbeddedResource Include="Presentation\frmphieukhambenh.resx">
       <DependentUpon>frmphieukhambenh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmquanlynguoidung.resx">
+      <DependentUpon>frmquanlynguoidung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmthuoc.resx">
       <DependentUpon>frmthuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmdanhsachkhambenh.resx">
       <DependentUpon>frmdanhsachkhambenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmtimkiem.resx">
+      <DependentUpon>frmtimkiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -175,7 +269,34 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
+    <EmbeddedResource Include="Report1.rdlc" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CrystalReport1.mht" />
+    <None Include="CrystalReport2.mht" />
+    <None Include="dtshoadon.xsc">
+      <DependentUpon>dtshoadon.xsd</DependentUpon>
+    </None>
+    <None Include="dtshoadon.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtshoadon.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dtshoadon.xss">
+      <DependentUpon>dtshoadon.xsd</DependentUpon>
+    </None>
+    <None Include="hoadonxsd.xsc">
+      <DependentUpon>hoadonxsd.xsd</DependentUpon>
+    </None>
+    <None Include="hoadonxsd.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hoadonxsd.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="hoadonxsd.xss">
+      <DependentUpon>hoadonxsd.xsd</DependentUpon>
+    </None>
     <None Include="PhongMachTuDataSet.xsc">
       <DependentUpon>PhongMachTuDataSet.xsd</DependentUpon>
     </None>
@@ -365,7 +486,9 @@
   <ItemGroup>
     <None Include="Resources\xoachuyenlop.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BUS\BUS.csproj">
       <Project>{EEDA97E8-4714-4D37-9B90-44B89B9D4DA6}</Project>

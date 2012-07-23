@@ -58,5 +58,9 @@ namespace BUS
        {
            return dao.getBaoCaoThang(thang, nam);
        }
+       public DataTable getHoaDon(string mabn, string ngaykham)
+       {
+           return dao.getHoaDon(mabn, ngaykham);
+       }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BUS;
 using DTO;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace QLPhongMachTu.Presentation
 {
@@ -43,7 +44,17 @@ namespace QLPhongMachTu.Presentation
                 {
                     btnindonthuoc.Enabled = false;
                     checkBoxMuathuoc.Enabled = false;
-                    btninhoadon.Enabled = false;
+                    btninhoadon.Enabled = true;
+                    if (hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString() + dtimengaykham.Text.ToString()) != null)
+                    {
+                        btninhoadon.Enabled = true;
+                    }
+                    else
+                    {
+                        btninhoadon.Enabled = false;
+                        lbltienthuoc.Text = "0";
+                        lbltongcong.Text = "0";
+                    }
                 }
                 else
                 {
@@ -58,7 +69,7 @@ namespace QLPhongMachTu.Presentation
                             tongtien += float.Parse(lbltienkham.Text.ToString());
                             btnindonthuoc.Enabled = false;
                             checkBoxMuathuoc.Enabled = false;
-                            btninhoadon.Enabled = true;                         
+                             btninhoadon.Enabled = true;                         
                             if (lbltienthuoc.Text == "0")
                                 checkBoxMuathuoc.Checked = false;
                             else
@@ -119,6 +130,7 @@ namespace QLPhongMachTu.Presentation
             btnindonthuoc.Enabled = false;
             checkBoxMuathuoc.Enabled = false;
             btninhoadon.Enabled = false;
+            bnbus.showBNChuaLapHD(lvdsbenhnhan, bnbus.getListByPhieuKham(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
         }
 
         private void rdtheongay_CheckedChanged(object sender, EventArgs e)
@@ -266,6 +278,15 @@ namespace QLPhongMachTu.Presentation
         {
            // bnbus.showInListView(lvdsbenhnhan, bnbus.getListByPhieuKham(dtimengaykham.Text.ToString(), "in"));
             bnbus.showBNChuaLapHD(lvdsbenhnhan, bnbus.getListByPhieuKham(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
+        }
+
+        private void btninhoadon_Click(object sender, EventArgs e)
+        {
+            KHAIBAO.mabenhnhan = lblmabenhnhan.Text.ToString();
+            KHAIBAO.ngaykham = lblngaykham.Text.ToString();
+            Presentation.frminhoadon frm = new frminhoadon();
+            frm.ShowDialog();
+           
         }
     }
 }

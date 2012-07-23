@@ -105,6 +105,7 @@
             this.btnhuybo.Size = new System.Drawing.Size(84, 35);
             this.btnhuybo.TabIndex = 6;
             this.btnhuybo.Text = "Hủy bỏ";
+            this.btnhuybo.Click += new System.EventHandler(this.btnhuybo_Click);
             // 
             // btndangnhap
             // 
@@ -116,6 +117,7 @@
             this.btndangnhap.Size = new System.Drawing.Size(81, 35);
             this.btndangnhap.TabIndex = 5;
             this.btndangnhap.Text = "Đăng nhập";
+            this.btndangnhap.Click += new System.EventHandler(this.btndangnhap_Click);
             // 
             // rImageDangNhap
             // 
@@ -143,6 +145,8 @@
             this.txtmatkhau.PasswordChar = '*';
             this.txtmatkhau.Size = new System.Drawing.Size(131, 20);
             this.txtmatkhau.TabIndex = 3;
+            this.txtmatkhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtmatkhau_KeyDown);
+            this.txtmatkhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtmatkhau_KeyPress);
             // 
             // txttendangnhap
             // 
@@ -154,6 +158,8 @@
             this.txttendangnhap.Name = "txttendangnhap";
             this.txttendangnhap.Size = new System.Drawing.Size(131, 20);
             this.txttendangnhap.TabIndex = 2;
+            this.txttendangnhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttendangnhap_KeyDown);
+            this.txttendangnhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txttendangnhap_KeyPress);
             // 
             // labelX2
             // 
