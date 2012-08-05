@@ -62,6 +62,15 @@ namespace DAO
             }
             return ctk;
         }
+        public DataTable getDonthuoc(string maphieukham)// getDonthuoc
+        {
+            string sql = " select substring(ct.MaPhieuKhamBenh,1,5) as MaBenhNhan, substring(ct.MaPhieuKhamBenh,6,10) as NgayKham, ct.MaLoaiThuoc, ct.MaCachDung,ct.SoLuong, ct.DonGia,lt.TenLoaiThuoc  from CT_KHAM ct, LOAITHUOC lt Where lt.MaLoaiThuoc = ct.MaLoaiThuoc and ct.MaPhieuKhamBenh=@MaPhieuKham";
+            SqlParameter[] sp = new SqlParameter[1];
+            sp[0] = new SqlParameter("@MaPhieuKham", maphieukham);     
+            DataTable dt = new DataTable();
+            dt = conectData.LoadData(sql, sp);
+            return dt;
+        }
         public CT_KhamDTO[] getListByMaPhieuKham(string maphieukham)// list of all benhnhan
         {
             CT_KhamDTO[] list;

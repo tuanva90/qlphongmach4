@@ -145,6 +145,13 @@ namespace DAO
             }
             return loaithuoc;
         }
+        public DataTable getLoaiThuoc()//
+        {
+           string sql = " select lt.MaLoaiThuoc, lt.TenLoaiThuoc, lt.MaDonViTinh from LOAITHUOC lt ";
+             DataTable dt = new DataTable();
+            dt = conectData.LoadData(sql);
+            return dt;
+        }
         public int delete(int magv)
         {
             string sql;

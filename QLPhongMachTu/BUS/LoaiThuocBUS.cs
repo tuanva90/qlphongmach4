@@ -180,7 +180,19 @@ namespace BUS
             {
                 if (dao.getByPrimaryKey(dto.MaLoaiThuoc).TenLoaiThuoc.ToString().Equals(dto.TenLoaiThuoc.ToString()))
                 {
-                    MessageBox.Show(" Tên thuốc không thay đổi !");
+                    if (dao.getByPrimaryKey(dto.MaLoaiThuoc).MaDonViTinh == dto.MaDonViTinh)
+                    {
+                        MessageBox.Show(" Bạn đã không thay đổi thông tin nào !");
+
+                    }
+                    else
+                    {
+                        result = dao.updateTenThuoc(dto);
+                        if (result > 0)
+                            MessageBox.Show(" Cập nhật thông tin loại thuốc thành công !");
+                        else
+                            MessageBox.Show(" Cập nhật thông tin loại thuốc thất bại !");
+                    }
                 }
                 else
                 {
@@ -195,19 +207,25 @@ namespace BUS
                                 check = true;
                                 break;
                             }
+                            if (dao.getByPrimaryKey(dto.MaLoaiThuoc).TenLoaiThuoc.ToString().Equals(dto.TenLoaiThuoc.ToString()))
+                            {
+                                check = false;
+                                break;
+                            }
+
                         }
-                        if (check != true)
+                        if (check == true)
                         {
-                           result = dao.updateTenThuoc(dto);
+                            MessageBox.Show(" Tên loại thuốc đã tồn tại !");
+                        }
+                        else
+                        {
+                            result = dao.updateTenThuoc(dto);
                             if (result > 0)
                                 MessageBox.Show(" Cập nhật thông tin loại thuốc thành công !");
                             else
                                 MessageBox.Show(" Cập nhật thông tin loại thuốc thất bại !");
-                        }
-                        else
-                        {
-
-                            MessageBox.Show(" Tên loại thuốc đã tồn tại !");
+                           
                         }
                     }
                     else
@@ -253,6 +271,10 @@ namespace BUS
           public int getMaxLanNhap(int mathuoc)
           {
               return nkdao.getMaxLanNhap(mathuoc);
+          }
+          public DataTable getLoaiThuoc()
+          {
+              return dao.getLoaiThuoc();
           }
     }
 }

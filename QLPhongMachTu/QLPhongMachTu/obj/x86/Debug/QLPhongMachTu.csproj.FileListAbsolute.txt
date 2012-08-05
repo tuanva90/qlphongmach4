@@ -32,3 +32,4 @@ D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\QLPhongMachTu\bi
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\QLPhongMachTu\bin\Debug\DAO.pdb
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\QLPhongMachTu\obj\x86\Debug\QLPhongMachTu.exe
 D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\QLPhongMachTu\obj\x86\Debug\QLPhongMachTu.pdb
+D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\QLPhongMachTu\obj\x86\Debug\QLPhongMachTu.Presentation.frmindonthuoc.resources
