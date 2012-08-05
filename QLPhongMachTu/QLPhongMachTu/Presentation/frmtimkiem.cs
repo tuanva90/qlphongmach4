@@ -94,5 +94,13 @@ namespace QLPhongMachTu.Presentation
                 btninpk.Enabled = true;
             }
         }
+
+        private void btninhoadon_Click(object sender, EventArgs e)
+        {
+            KHAIBAO.mabenhnhan = txtmabn_hd.Text.ToString();
+            KHAIBAO.ngaykham = lblngaylap.Text.ToString();
+            Presentation.frminhoadon frm = new frminhoadon();
+            frm.ShowDialog();
+        }
     }
 }
