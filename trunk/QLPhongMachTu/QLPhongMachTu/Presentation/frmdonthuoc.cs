@@ -69,5 +69,13 @@ namespace QLPhongMachTu.Presentation
             lvdonthuoc.Items.Clear();
 
         }
+
+        private void btnindonthuoc_Click(object sender, EventArgs e)
+        {
+            KHAIBAO.mabenhnhan = mabenhnhan;
+            KHAIBAO.ngaykham = dtimengaykham.Text.ToString();
+            frmindonthuoc frm = new frmindonthuoc();
+            frm.ShowDialog();
+        }
     }
 }

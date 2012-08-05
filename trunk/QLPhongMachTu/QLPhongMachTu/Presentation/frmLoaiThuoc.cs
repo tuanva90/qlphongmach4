@@ -89,7 +89,7 @@ namespace QLPhongMachTu.Presentation
                 btnthemthuoc.Text = "Hủy";
                 btnsuathuoc.Enabled = true;
                 btnxoathuoc.Enabled = true;
-                lbldonvi.Text = lvi.SubItems[2].ToString();
+                lbldonvi.Text = lvi.SubItems[2].Text.ToString();
             }
         }
 

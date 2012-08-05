@@ -31,5 +31,9 @@ namespace BUS
         {
             return bndao.getByPrimaryKey(macd);
         }
+        public DataTable getCachDung()
+        {
+            return bndao.getCachdung();
+        }
     }
 }

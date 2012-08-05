@@ -5,5 +5,9 @@
         partial class HoaDonDataTable
         {
         }
+    
+        partial class HoaDonDataTable
+        {
+        }
     }
 }

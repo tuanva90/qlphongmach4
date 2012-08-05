@@ -11,14 +11,14 @@ using BUS;
 using DTO;
 namespace QLPhongMachTu.Presentation
 {
-    public partial class frminhoadon : Form
+    public partial class frmindonthuoc : Form
     {
         HoaDonBUS hdbus = new HoaDonBUS();
         CT_KhamBUS ctkbus = new CT_KhamBUS();
         CachDungBUS cdbus = new CachDungBUS();
         LoaiThuocBUS ltbus = new LoaiThuocBUS();
         DonViBUS dvbus = new DonViBUS();
-        public frminhoadon()
+        public frmindonthuoc()
         {
             InitializeComponent();
         }
@@ -41,22 +41,11 @@ namespace QLPhongMachTu.Presentation
             dts.Tables.Add(dt3);
             dts.Tables.Add(dt4);
             dts.Tables.Add(dt5);
-            if (float.Parse(ds.Rows[0]["TienThuoc"].ToString()) == 0)
-            {
-                ReportDocument report = new ReportDocument();
-                report.Load("..\\..\\inhoadon1.rpt");
-                report.SetDataSource(dts);
-                crystalReportViewer.ReportSource = report;
-                inhoadon1 dt = new inhoadon1();
-            }
-            else
-            {
-                ReportDocument report = new ReportDocument();
-                report.Load("..\\..\\inhoadon.rpt");
-                report.SetDataSource(dts);
-                crystalReportViewer.ReportSource = report;
-                inhoadon dt = new inhoadon();
-            }
-         }
+            ReportDocument report = new ReportDocument();
+            report.Load("..\\..\\indonthuoc.rpt");
+            report.SetDataSource(dts);
+            crystalReportViewer.ReportSource = report;
+            indonthuoc dt = new indonthuoc();         
+        }
     }
 }

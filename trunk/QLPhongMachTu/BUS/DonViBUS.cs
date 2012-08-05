@@ -137,5 +137,9 @@ namespace BUS
         {
             return dvdao.getList();
         }
+        public DataTable getDonVi()
+        {
+            return dvdao.getDonVi();
+        }
     }
 }

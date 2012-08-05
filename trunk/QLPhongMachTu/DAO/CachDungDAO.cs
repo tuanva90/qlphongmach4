@@ -82,6 +82,15 @@ namespace DAO
             }
             return cachdung;
         }
+        public DataTable getCachdung()// getCachdung datatable
+        {
+            CachDungDTO cachdung = new CachDungDTO();
+            string sql = " select * from CACHDUNG ";
+           // SqlParameter sp = new SqlParameter("@MaCachDung", macachdung);
+            DataTable dt = new DataTable();
+            dt = conectData.LoadData(sql);
+            return dt;
+        }
         public int getMaxMaCachDung()// list of all benhnhan
         {
             int ma;

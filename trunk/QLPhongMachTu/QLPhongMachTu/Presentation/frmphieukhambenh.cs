@@ -251,41 +251,54 @@ namespace QLPhongMachTu.Presentation
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            if (hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString()+dtimengaykham.Text.ToString()) != null)
+            if (hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString() + dtimengaykham.Text.ToString()) != null)
             {
                 MessageBox.Show(" Hóa đơn trong ngày của bệnh nhân này đã được lập, không thể kê thêm thuốc !");
             }
             else
             {
-                  DialogResult result;
-             result = MessageBox.Show("Số lượng loại thuốc này trong kho không đủ, bạn vẫn muốn kê thuốc này cho bệnh nhân ???", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-             if (result == DialogResult.Yes)
-             {
+                //DialogResult result;
+                //result = MessageBox.Show("Số lượng loại thuốc này trong kho không đủ, bạn vẫn muốn kê thuốc này cho bệnh nhân ???", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //if (result == DialogResult.Yes)
+                //{
+                if ((float.Parse(txtsang.Text.ToString()) + float.Parse(txttrua.Text.ToString()) + float.Parse(txtchieu.Text.ToString()) + float.Parse(txttoi.Text.ToString()) > float.Parse(cmbsoluong.Text.ToString())))
+                {
+                    MessageBox.Show(" Vui lòng chia lại số thuốc uống từng buổi !");
+                }
+                else
+                {
+                    ctkdto = new CT_KhamDTO();
+                    cddto = new CachDungDTO();
+                    ctkdto.MaPhieuKhamBenh = lblmabenhnhan.Text.ToString() + dtimengaykham.Text;
+                    ctkdto.DonGia = float.Parse(lbldongia.Text.ToString());
+                    ctkdto.MaLoaiThuoc = int.Parse(cmbloaithuoc.SelectedValue.ToString());
+                    ctkdto.SoLuong = float.Parse(cmbsoluong.Text.ToString());
 
-                 ctkdto = new CT_KhamDTO();
-                 cddto = new CachDungDTO();
-                 ctkdto.MaPhieuKhamBenh = lblmabenhnhan.Text.ToString() + dtimengaykham.Text;
-                 ctkdto.DonGia = float.Parse(lbldongia.Text.ToString());
-                 ctkdto.MaLoaiThuoc = int.Parse(cmbloaithuoc.SelectedValue.ToString());
-                 ctkdto.SoLuong = float.Parse(cmbsoluong.Text.ToString());
-
-                 cddto.CachDung = txtcachdung.Text.ToString();
-                 cddto.GhiChu = txtghichu.Text.ToString();
-                 cddto.Sang = float.Parse(txtsang.Text.ToString());
-                 cddto.Trua = float.Parse(txttrua.Text.ToString());
-                 cddto.Chieu = float.Parse(txtchieu.Text.ToString());
-                 cddto.Toi = float.Parse(txttoi.Text.ToString());
-
-                 ctkbus.insert(ctkdto, cddto);
-                 if (float.Parse(cmbsoluong.Text.ToString()) == 0)
-                 {
-                     MessageBox.Show(" Số lượng thuốc kê đơn phải >0 !");
-                 }
-                 else
-                 {
-                     ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
-                 }
-             }
+                    cddto.CachDung = txtcachdung.Text.ToString();
+                    cddto.GhiChu = txtghichu.Text.ToString();
+                    cddto.Sang = float.Parse(txtsang.Text.ToString());
+                    cddto.Trua = float.Parse(txttrua.Text.ToString());
+                    cddto.Chieu = float.Parse(txtchieu.Text.ToString());
+                    cddto.Toi = float.Parse(txttoi.Text.ToString());
+                    if (ctkdto.SoLuong % (cddto.Sang + cddto.Trua + cddto.Chieu + cddto.Toi) == 0)
+                    {
+                        ctkbus.insert(ctkdto, cddto);
+                        if (float.Parse(cmbsoluong.Text.ToString()) == 0)
+                        {
+                            MessageBox.Show(" Số lượng thuốc kê đơn phải >0 !");
+                        }
+                        else
+                        {
+                            ctkbus.showInListView(lvDonThuoc, ctkbus.getListByMaPhieuKham(lblmabenhnhan.Text + dtimengaykham.Text));
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(" Số lượng thuốc kê chưa hợp lý !");
+                    }
+                   
+                    //}
+                }
             }
         }
 

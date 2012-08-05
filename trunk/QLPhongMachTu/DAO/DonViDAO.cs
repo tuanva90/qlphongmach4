@@ -80,5 +80,12 @@ namespace DAO
             return list;
 
         }
+        public DataTable getDonVi()//
+        {
+            string sql = " select MaDonViTinh, DonViTinh from DONVI ";
+            DataTable dt = new DataTable();
+            dt = conectData.LoadData(sql);
+            return dt;
+        }
     }
 }

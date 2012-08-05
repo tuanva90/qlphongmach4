@@ -55,6 +55,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
@@ -65,8 +67,6 @@
             this.tbSoLuong = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.navigationPane1.SuspendLayout();
             this.navigationPanePanel1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -255,6 +255,7 @@
             this.btnindonthuoc.Size = new System.Drawing.Size(75, 23);
             this.btnindonthuoc.TabIndex = 37;
             this.btnindonthuoc.Text = "In đơn thuốc";
+            this.btnindonthuoc.Click += new System.EventHandler(this.btnindonthuoc_Click);
             // 
             // exp1
             // 
@@ -440,6 +441,16 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 100;
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.DisplayIndex = 6;
+            this.columnHeader4.Width = 0;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.DisplayIndex = 7;
+            this.columnHeader5.Width = 0;
+            // 
             // columnHeader6
             // 
             this.columnHeader6.DisplayIndex = 4;
@@ -563,16 +574,6 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 31;
             this.panelEx1.Text = "Đơn thuốc";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.DisplayIndex = 6;
-            this.columnHeader4.Width = 0;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.DisplayIndex = 7;
-            this.columnHeader5.Width = 0;
             // 
             // frmdonthuoc
             // 

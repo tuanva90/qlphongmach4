@@ -144,5 +144,9 @@ namespace BUS
                 }
             }
         }
+        public DataTable getDonThuoc(string maphieukham)
+        {
+            return dvdao.getDonthuoc(maphieukham);
+        }
     }
 }

@@ -23,9 +23,15 @@ namespace QLPhongMachTu
         DSKBBUS dskbbus = new DSKBBUS();
         DSKBDTO dskbdto = new DSKBDTO();
         BenhNhanDTO[] listbn;
+        ThamSoBUS tsbus = new ThamSoBUS();
         private void mainForm_Load(object sender, EventArgs e)
         {
             dtimengaykham.Text = DateTime.Now.ToString();
+            listbn = bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in");
+            if (listbn == null)
+                lblsoluong.Text = "0/" + tsbus.getThamSo().SoBenhNhanToiDa.ToString();
+            else
+                lblsoluong.Text = listbn.Length.ToString() + "/" + tsbus.getThamSo().SoBenhNhanToiDa.ToString();
             bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));
            // bnbus.showInListView(lvdskhambenh, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"));
             bnbus.showBNChuaLapPhieuKham(lvdskhambenh, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
@@ -118,16 +124,26 @@ namespace QLPhongMachTu
             }
             else
             {
-                dskbdto.NgayKham = dtimengaykham.Text.ToString();
-                dskbdto.MaBenhNhan = mabn;
-                dskbbus.insert(dskbdto);
-                // cap nhat lvdskham benh và lvdsbenhnhan
-                bnbus.showBNChuaLapPhieuKham(lvdskhambenh, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
-                bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
-                btnxoa.Enabled = false;
+                listbn = bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in");
+                 if (listbn != null && listbn.Length > int.Parse(tsbus.getThamSo().SoBenhNhanToiDa.ToString()))
+                 {
+                     MessageBox.Show(" Số bệnh nhân tới khám tối đa trong ngày là : " + tsbus.getThamSo().SoBenhNhanToiDa.ToString() + " người ! ");
+                 }
+                 else
+                 {
+                     dskbdto.NgayKham = dtimengaykham.Text.ToString();
+                     dskbdto.MaBenhNhan = mabn;
+                     dskbbus.insert(dskbdto);
+                     // cap nhat lvdskham benh và lvdsbenhnhan
+                     bnbus.showBNChuaLapPhieuKham(lvdskhambenh, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
+                     bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
+                     btnxoa.Enabled = false;
+                     lblsoluong.Text = listbn.Length.ToString() + "/" + tsbus.getThamSo().SoBenhNhanToiDa.ToString();
+                 }
             }
             txtmabn.Text = "";
             txthoten.Text = "";
+            lblsoluong.Text = bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in").Length.ToString() + "/" + tsbus.getThamSo().SoBenhNhanToiDa.ToString();
         }
 
         string mabn;
@@ -161,29 +177,42 @@ namespace QLPhongMachTu
             else
             {
                 listbn = bnbus.getListByPhieuKham(dtimengaykham.Text.ToString(), "in");
-
                 dskbdto.NgayKham = dtimengaykham.Text.ToString();
                 dskbdto.MaBenhNhan = mabn;
-                // kiem tra xem benh nhan da duoc lap phieu kham chua, neu da lap phieu kham roi thi k the xoa khoi danh sach kham benh !
-                bool result = false;
-                for (int i = 0; i < listbn.Length; i++)
+                if (listbn != null)
                 {
-                    if (listbn[i].MaBenhNhan == dskbdto.MaBenhNhan)
+
+                    // kiem tra xem benh nhan da duoc lap phieu kham chua, neu da lap phieu kham roi thi k the xoa khoi danh sach kham benh !
+                    bool result = false;
+                    for (int i = 0; i < listbn.Length; i++)
                     {
-                        result = true;
-                        break;
+                        if (listbn[i].MaBenhNhan == dskbdto.MaBenhNhan)
+                        {
+                            result = true;
+                            break;
+                        }
                     }
+                    if (result == false)
+                    {
+                        dskbbus.delete(dskbdto);
+                        // cap nhat lvdskham benh và lvdsbenhnhan
+                        bnbus.showBNChuaLapPhieuKham(lvdskhambenh, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
+                        bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
+                        
+                        lblsoluong.Text =  bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in").Length.ToString() + "/" + tsbus.getThamSo().SoBenhNhanToiDa.ToString();
+                    }
+                    else
+                        MessageBox.Show(" Bệnh nhân này đã được lập phiếu khám, không thể xóa !");
+                    btnthemvaodskb.Enabled = false;
                 }
-                if (result == false)
+                else
                 {
                     dskbbus.delete(dskbdto);
                     // cap nhat lvdskham benh và lvdsbenhnhan
                     bnbus.showBNChuaLapPhieuKham(lvdskhambenh, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
                     bnbus.showInListView(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "not in"));//
+                    lblsoluong.Text = bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in").Length.ToString() + "/" + tsbus.getThamSo().SoBenhNhanToiDa.ToString();
                 }
-                else
-                    MessageBox.Show(" Bệnh nhân này đã được lập phiếu khám, không thể xóa !");               
-                 btnthemvaodskb.Enabled = false;
             }
             txtmabn.Text = "";
             txthoten.Text = "";

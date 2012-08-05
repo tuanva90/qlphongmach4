@@ -2,7 +2,11 @@
     
     
     public partial class dtshoadon {
-        partial class DataTable1DataTable
+        partial class DonThuocDataTable
+        {
+        }
+
+        partial class HoaDonDataTable
         {
         }
     }
