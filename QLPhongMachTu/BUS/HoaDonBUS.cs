@@ -27,7 +27,14 @@ namespace BUS
                        lvi.SubItems.Add(list[i].MaPhieuKhamBenh.Substring(5, 10).ToString());
                    }
                    else
-                       lvi.SubItems.Add(list[i].MaPhieuKhamBenh.Substring(5, 9).ToString());
+                   {
+                       if (list[i].MaPhieuKhamBenh.Length == 13)
+                       {
+                           lvi.SubItems.Add(list[i].MaPhieuKhamBenh.Substring(5, 8).ToString());
+                       }
+                       else
+                          lvi.SubItems.Add(list[i].MaPhieuKhamBenh.Substring(5, 9).ToString());
+                   }
                    lvi.SubItems.Add(list[i].TienKham.ToString());
                    lvi.SubItems.Add(list[i].TienThuoc.ToString());
                    lv.Items.Add(lvi);
