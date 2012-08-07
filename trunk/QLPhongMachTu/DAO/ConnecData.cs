@@ -10,7 +10,9 @@ namespace DAO
     public class ConectData
     {
         string connection = @"Data Source=ThanhIT-PC\sqlexpress;Initial Catalog=PhongMachTu;Integrated Security=True";
-        SqlConnection conn;
+         //string str1 = Application.StartupPath + @"\QLPhongMachTu.mdf"; // Path.GetFullPath("QLPhongMachTu.mdf");
+        //   string connection = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + str1 + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
+         SqlConnection conn;
         void OpenConnection()
         {
             conn = new SqlConnection(connection);

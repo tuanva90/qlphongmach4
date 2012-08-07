@@ -123,5 +123,13 @@ namespace DAO
             }
             return list;
         }
+        public DataTable getPhieuKham(string ngaykham)// getDonthuoc
+        {
+            string sql = " select substring(ct.MaPhieuKhamBenh,1,5) as MaBenhNhan, substring(ct.MaPhieuKhamBenh,6,10) as NgayKham, ct.TrieuChung, lb.TenLoaiBenh as LoaiBenhChinh, lb1.TenLoaiBenh as LoaiBenhPhu from PHIEUKHAMBENH ct, LOAIBENH lb, LOAIBENH lb1 Where ct.MaLoaiBenh=lb.MaLoaiBenh and ct.MaLoaiBenhPhu = lb1.MaLoaiBenh and substring(ct.MaPhieuKhamBenh,6,10)=@ngaykham ";
+            DataTable dt = new DataTable();
+            SqlParameter sp = new SqlParameter("@ngaykham", ngaykham);
+            dt = conectData.LoadData(sql,sp);
+            return dt;
+        }
     }
 }
