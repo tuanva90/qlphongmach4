@@ -97,6 +97,9 @@ namespace BUS
         {
             return dvdao.getListByNgayKham(ngaykham);
         }
-      
+        public DataTable getPhieuKham(string ngaykham)
+        {
+            return dvdao.getPhieuKham(ngaykham);
+        }
     }
 }

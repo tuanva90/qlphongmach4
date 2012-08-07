@@ -89,10 +89,80 @@ namespace QLPhongMachTu
 
         private void buttonItem14_Click(object sender, EventArgs e)
         {
+            SqlConnection.ClearAllPools();
+            DialogResult result;
+            result = MessageBox.Show("Bạn có thật sự muốn phục hổi dữ liệu ?", " Chú ý ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //if (bk.Restore())
+                //    MessageBox.Show("Phục hồi thành công ");
+                //else
+                //    MessageBox.Show("Phục hồi thất bại");
+                string str1 = Path.GetFullPath("QLPhongMachTu.mdf");
+                string str2 = Path.GetFullPath("QLPhongMachTu_log.ldf");
+                string str_mdf = @"";
+                for (int i = 0; i < str1.Length; i++)
+                {
+                    str_mdf += str1[i];
+                }
+                string str_ldf = @"";
+                for (int i = 0; i < str2.Length; i++)
+                {
+                    str_ldf += str2[i];
+                }
+                if (File.Exists(str_mdf))
+                    File.Delete(str_mdf);
+                if (File.Exists(str_ldf))
+                    File.Delete(str_ldf);
+                string str_mdf_save = @"";
+                for (int i = 0; i < str1.Length - 17; i++)
+                {
+                    str_mdf_save += str1[i];
+                }
+                str_mdf_save += "\\Save\\";
+                File.Copy(str_mdf_save + "QLPhongMachTu.mdf", str_mdf);
+                File.Copy(str_mdf_save + "QLPhongMachTu_log.mdf", str_ldf);
+                MessageBox.Show(" Phục hồi dữ liệu thành công");
+            }            
         }
 
         private void buttonItem14_Click_1(object sender, EventArgs e)
         {
+            SqlConnection.ClearAllPools();
+            DialogResult result;
+            result = MessageBox.Show("Bạn có thật sự muốn sao lưu dữ liệu ?", " Chú ý ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //if (bk.Backup())
+                //    MessageBox.Show("Sao lưu thành công ");
+                //else
+                //    MessageBox.Show("Sao lưu thất bại");
+                string str1 = Path.GetFullPath("QLPhongMachTu.mdf");
+                string str2 = Path.GetFullPath("QLPhongMachTu_log.ldf");
+                string str_mdf = @"";
+                for (int i = 0; i < str1.Length; i++)
+                {
+                    str_mdf += str1[i];
+                }
+                string str_ldf = @"";
+                for (int i = 0; i < str2.Length; i++)
+                {
+                    str_ldf += str2[i];
+                }
+                string str_mdf_save = @"";
+                for (int i = 0; i < str1.Length - 17; i++)
+                {
+                    str_mdf_save += str1[i];
+                }
+                str_mdf_save += "\\Save\\";
+                if (File.Exists(str_mdf_save + "QLPhongMachTu.mdf"))
+                    File.Delete(str_mdf_save + "QLPhongMachTu.mdf");
+                if (File.Exists(str_mdf_save + "QLPhongMachTu_log.mdf"))
+                    File.Delete(str_mdf_save + "QLPhongMachTu_log.mdf");
+                File.Copy(str_mdf, str_mdf_save + "QLPhongMachTu.mdf");
+                File.Copy(str_ldf, str_mdf_save + "QLPhongMachTu_log.mdf");
+                MessageBox.Show("Sao lưu thành công");
+            }                   
         }
 
         private void btnqlhoadon_Click(object sender, EventArgs e)

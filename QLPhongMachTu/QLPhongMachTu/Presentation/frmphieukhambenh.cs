@@ -143,6 +143,7 @@ namespace QLPhongMachTu.Presentation
                 {
                     btnlapphieukham.Enabled = false;
                     btnsuaphieukham.Enabled = true;
+                    btninphieukham.Enabled = true;
                     grlaythuoc.Enabled = true;
                     bnbus.showBNChuaLapPhieuKham(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());                }
         }
@@ -168,18 +169,23 @@ namespace QLPhongMachTu.Presentation
                     lbldiachi.Text = lvi.SubItems[6].Text;
                     grketquakham.Enabled = true;
                     exp1.Expanded = false;
+                    pkbdto = pkbbus.getByPrimaryKey(lblmabenhnhan.Text.ToString(), dtimengaykham.Text.ToString());
                        if (dtimengaykham.Text.Equals(DateTime.Now.ToShortDateString().ToString()) == false)
                             {
                                 grketquakham.Enabled = false;
                                 grlaythuoc.Enabled = false;
+
+                                if (pkbdto != null)
+                                    btninphieukham.Enabled = true;
                             }
                             else
                             {
-                            pkbdto = pkbbus.getByPrimaryKey(lblmabenhnhan.Text.ToString(), dtimengaykham.Text.ToString());
+                          
                             if (pkbdto == null)
                             {
                                 btnlapphieukham.Enabled = true;
                                 btnsuaphieukham.Enabled = false;
+                                btninphieukham.Enabled = false;
                                 grlaythuoc.Enabled = false;
                                 lvDonThuoc.Items.Clear();
                             }
@@ -187,6 +193,7 @@ namespace QLPhongMachTu.Presentation
                             {
                                 btnlapphieukham.Enabled = false;
                                 btnsuaphieukham.Enabled = true;
+                                btninphieukham.Enabled = true;
                                 grlaythuoc.Enabled = true;
                                 txttrieuchung.Text = pkbdto.TrieuChung;
                                 cbloaibenhchinh.Text = lbbus.getByPrimaryKey(pkbdto.MaLoaiBenh).TenLoaiBenh.ToString();
@@ -522,5 +529,13 @@ namespace QLPhongMachTu.Presentation
             bnbus.showBNChuaLapPhieuKham(lvdsbenhnhan, bnbus.getListByDSKB(dtimengaykham.Text.ToString(), "in"), dtimengaykham.Text.ToString());
         }
 
+        private void btninphieukham_Click(object sender, EventArgs e)
+        {
+            KHAIBAO.mabenhnhan = lblmabenhnhan.Text.ToString();
+            KHAIBAO.ngaykham = dtimengaykham.Text.ToString();
+            frminphieukham frm = new frminphieukham();
+            frm.ShowDialog();
+        }
+        
     }
 }

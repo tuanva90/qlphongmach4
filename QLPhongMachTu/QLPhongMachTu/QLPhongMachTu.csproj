@@ -66,6 +66,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="inphieukham.cs">
+      <DependentUpon>inphieukham.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Presentation\frminphieukham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frminphieukham.Designer.cs">
+      <DependentUpon>frminphieukham.cs</DependentUpon>
+    </Compile>
     <Compile Include="inhoadon1.cs">
       <DependentUpon>inhoadon1.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -228,6 +240,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="inphieukham.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inphieukham.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frminphieukham.resx">
+      <DependentUpon>frminphieukham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="inhoadon1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inhoadon1.cs</LastGenOutput>
