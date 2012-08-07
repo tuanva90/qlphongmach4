@@ -48,6 +48,9 @@ namespace QLPhongMachTu.Presentation
                     if (hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString() + dtimengaykham.Text.ToString()) != null)
                     {
                         btninhoadon.Enabled = true;
+                        lbltienkham.Text = hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString() + dtimengaykham.Text.ToString()).TienKham.ToString();
+                        lbltienthuoc.Text = hdbus.getByPrimaryKey(lblmabenhnhan.Text.ToString() + dtimengaykham.Text.ToString()).TienThuoc.ToString();
+                        tongtien += (float.Parse(lbltienthuoc.Text.ToString() + float.Parse(lbltienkham.Text.ToString())));
                     }
                     else
                     {

@@ -70,6 +70,7 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grketquakham = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btninphieukham = new DevComponents.DotNetBar.ButtonX();
             this.btnsuaphieukham = new DevComponents.DotNetBar.ButtonX();
             this.btnlapphieukham = new DevComponents.DotNetBar.ButtonX();
             this.cbloaibenhphu = new System.Windows.Forms.ComboBox();
@@ -698,6 +699,7 @@
             this.grketquakham.AutoSize = true;
             this.grketquakham.CanvasColor = System.Drawing.SystemColors.Control;
             this.grketquakham.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.grketquakham.Controls.Add(this.btninphieukham);
             this.grketquakham.Controls.Add(this.btnsuaphieukham);
             this.grketquakham.Controls.Add(this.btnlapphieukham);
             this.grketquakham.Controls.Add(this.cbloaibenhphu);
@@ -733,12 +735,25 @@
             this.grketquakham.TabIndex = 32;
             this.grketquakham.Text = "Kết quả khám";
             // 
+            // btninphieukham
+            // 
+            this.btninphieukham.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btninphieukham.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btninphieukham.Enabled = false;
+            this.btninphieukham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btninphieukham.Location = new System.Drawing.Point(241, 185);
+            this.btninphieukham.Name = "btninphieukham";
+            this.btninphieukham.Size = new System.Drawing.Size(72, 32);
+            this.btninphieukham.TabIndex = 35;
+            this.btninphieukham.Text = "In phiếu";
+            this.btninphieukham.Click += new System.EventHandler(this.btninphieukham_Click);
+            // 
             // btnsuaphieukham
             // 
             this.btnsuaphieukham.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnsuaphieukham.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnsuaphieukham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsuaphieukham.Location = new System.Drawing.Point(170, 185);
+            this.btnsuaphieukham.Location = new System.Drawing.Point(131, 185);
             this.btnsuaphieukham.Name = "btnsuaphieukham";
             this.btnsuaphieukham.Size = new System.Drawing.Size(105, 32);
             this.btnsuaphieukham.TabIndex = 34;
@@ -750,7 +765,7 @@
             this.btnlapphieukham.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnlapphieukham.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnlapphieukham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlapphieukham.Location = new System.Drawing.Point(58, 184);
+            this.btnlapphieukham.Location = new System.Drawing.Point(29, 185);
             this.btnlapphieukham.Name = "btnlapphieukham";
             this.btnlapphieukham.Size = new System.Drawing.Size(97, 32);
             this.btnlapphieukham.TabIndex = 33;
@@ -1522,6 +1537,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.PanelEx panelEx4;
         private DevComponents.DotNetBar.LabelX labelX10;
+        private DevComponents.DotNetBar.ButtonX btninphieukham;
 
     }
 }
