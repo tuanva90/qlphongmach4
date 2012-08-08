@@ -4,17 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace DAO
 {
     public class ConectData
     {
-        string connection = @"Data Source=ThanhIT-PC\sqlexpress;Initial Catalog=PhongMachTu;Integrated Security=True";
-         //string str1 = Application.StartupPath + @"\QLPhongMachTu.mdf"; // Path.GetFullPath("QLPhongMachTu.mdf");
+        //string connection = @"Data Source=.\SQLEXPRESS;AttachDbFilename='D:\study\ky 7\Phan mem huong doi tuong\SVN source\QLPhongMachTu\QLPhongMachTu\Database\PhongMachTu.mdf';Integrated Security=True;User Instance=True";
+         //string str1 = Application.StartupPath + @"\PhongMachTu.mdf"; // Path.GetFullPath("QLPhongMachTu.mdf");
         //   string connection = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + str1 + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
-         SqlConnection conn;
+
+        string str1 = Application.StartupPath + @"\Database\PhongMachTu.mdf"; // Path.GetFullPath("QLPhongMachTu.mdf");
+            //string str1 = @"Data Source=THANHIT-PC\SQLEXPRESS;Initial Catalog=QLPhongMachTu;Integrated Security=True";
+        string connection;// = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + str1 + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
+            
+        SqlConnection conn;
         void OpenConnection()
         {
+            connection = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + str1 + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
             conn = new SqlConnection(connection);
             conn.Open();
         }

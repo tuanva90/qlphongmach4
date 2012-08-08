@@ -33,5 +33,16 @@ namespace QLPhongMachTu.Properties {
                 return ((string)(this["PhongMachTuConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\Database\\PhongMachTu.md" +
+            "f;Integrated Security=True;User Instance=True")]
+        public string PhongMachTuConnectionString1 {
+            get {
+                return ((string)(this["PhongMachTuConnectionString1"]));
+            }
+        }
     }
 }

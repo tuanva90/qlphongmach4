@@ -39,6 +39,10 @@ namespace QLPhongMachTu.Presentation
                 Form1.user = qlndbus.getFromTenDangNhap(txttendangnhap.Text);
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Ten dang nhap hay mat khau khong dung. Hay thu lai sau", "Loi dang nhap");
+            }
         }
 
         private void txtmatkhau_KeyDown(object sender, KeyEventArgs e)
