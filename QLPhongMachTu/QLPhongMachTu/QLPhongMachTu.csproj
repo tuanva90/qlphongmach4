@@ -14,6 +14,21 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -66,6 +81,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\PhongMachTuDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhongMachTuDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="inphieukham.cs">
       <DependentUpon>inphieukham.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -220,6 +240,12 @@
     <Compile Include="Presentation\frmquanlynguoidung.Designer.cs">
       <DependentUpon>frmquanlynguoidung.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmthaydoiquidinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmthaydoiquidinh.designer.cs">
+      <DependentUpon>frmthaydoiquidinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmthuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +334,9 @@
     <EmbeddedResource Include="Presentation\frmquanlynguoidung.resx">
       <DependentUpon>frmquanlynguoidung.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmthaydoiquidinh.resx">
+      <DependentUpon>frmthaydoiquidinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmthuoc.resx">
       <DependentUpon>frmthuoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +362,17 @@
     </None>
     <None Include="CrystalReport1.mht" />
     <None Include="CrystalReport2.mht" />
+    <None Include="Database\PhongMachTuDataSet1.xsc">
+      <DependentUpon>PhongMachTuDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Database\PhongMachTuDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhongMachTuDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database\PhongMachTuDataSet1.xss">
+      <DependentUpon>PhongMachTuDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="dtshoadon.xsc">
       <DependentUpon>dtshoadon.xsd</DependentUpon>
     </None>
@@ -556,6 +596,47 @@
       <Project>{2CCC3242-102A-4268-8574-BAB7E2BD4683}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\PhongMachTu.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\PhongMachTu_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>PhongMachTu.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

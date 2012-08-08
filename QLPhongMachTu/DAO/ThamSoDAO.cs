@@ -14,7 +14,7 @@ namespace DAO
         {
             string sql = "update THAMSO set TienKham=@Tien";
             SqlParameter[] sp = new SqlParameter[1];
-            sp[0] = new SqlParameter("@Tien",sp);          
+            sp[0] = new SqlParameter("@Tien",tienkham);          
             return conectData.Insert_Update_Delete(sql, sp);
         }
         public int update(int sobntd)
